@@ -1,0 +1,443 @@
+@charset "UTF-8";
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: url('IMG/desktop1 copy.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #019090;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+#lottie{
+  position: absolute;
+  height: 34vh;
+  width: auto;
+}
+
+
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* AD POPUPS */
+
+
+/* .popup0 {
+  position: absolute;
+  z-index: 1;
+  border-radius: 3px 3px 0px 0px;
+padding: 79px 70px 60px 70px;
+border-top: solid 15px blue;
+height: auto;
+overflow: hidden;
+} */
+
+
+/* .popup0 img{
+  border-top: solid 10px blue;
+background-color: grey;
+transform: scale(2.5);
+margin-top: -30px;
+overflow:hidden
+} */
+
+.popup1 {
+  position: absolute;
+  z-index: 1;
+  border-radius: 3px 3px 0px 0px;
+padding: 79px 70px 60px 70px;
+border-top: solid 15px blue;
+height: auto;
+overflow: hidden;
+
+}
+
+.popup1 img{
+
+  border-top: solid 10px blue;
+background-color: grey;
+transform: scale(2.5);
+margin-top: -30px;
+overflow:hidden
+}
+
+.desktop_icon.popup0 {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+
+border: solid 3px grey;
+
+
+}
+
+.desktop_icon.popup0 img{
+width: 59vw;
+height:auto;
+}
+
+
+
+
+
+.nike-logo {
+  position: absolute;
+  align-self: center;
+  justify-content: center;
+}
+
+.nike-logo img {
+  height: 30vh;
+  width: auto;
+}
+
+/* Text Styling */
+/* white Pop-up window type */
+h1 {
+  text-align: left;
+  font: normal normal normal 20px Commuters Sans;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+}
+
+/* white Icon text */
+h2 {
+  font: normal normal normal 13px Tahoma;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  margin: 2px;
+}
+
+/* Blue subheading*/
+h3 {
+  margin-top: 3%;
+  text-align: left;
+  text-decoration: underline;
+  font: normal normal normal 19px/12px Tahoma;
+  letter-spacing: 0px;
+  color: #0000FF;
+  text-transform: uppercase;
+}
+
+h4 {
+  min-width: 60px;
+  min-height: 20px;
+  /* UI Properties */
+  text-align: center;
+  font: normal normal normal 12px/14px Tahoma;
+  letter-spacing: 0px;
+  color: #000000;
+}
+
+p {
+  /* Layout Properties */
+  top: 1px;
+  left: 0px;
+  width: 286px;
+  height: 21px;
+  /* UI Properties */
+  text-align: left;
+  font: normal normal normal 13px/15px Tahoma;
+  letter-spacing: 0px;
+  color: #000000;
+}
+
+/* Pop-up window */
+.PopUp_container {
+  position: relative;
+  visibility: hidden;
+  min-width: 42rem;
+  min-height: auto;
+}
+
+.PopUp_container_on {
+  position: relative;
+  visibility: visible;
+  min-width: 42rem;
+  min-height: auto;
+}
+
+/* Not sure what the heck this does */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window {
+  border: solid rgba(189, 190, 198, 100) 2px;
+  border-style: outset;
+  background: rgba(189, 190, 198, 100);
+  flex-flow: row wrap;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.title {
+  padding-left: 2.5%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  height: 1.875rem;
+  background: transparent linear-gradient(90deg, rgba(10, 39, 104, 1) 0%, rgba(157, 195, 238, 1) 100%);
+  margin: .2%;
+}
+
+.infoContainer {
+  height: auto;
+  width: auto;
+  display: flex;
+}
+
+#shoe-image {
+  display: flex;
+  border: solid #7070706E 2px;
+  border-style: inset;
+  overflow: hidden;
+  width: 50%;
+  height: auto;
+  overflow: hidden;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
+}
+
+.PopUp_container img {
+  width: 20rem;
+  height: auto;
+}
+
+
+
+.description {
+  border: solid #7070706E 2px;
+  border-style: inset;
+  margin: 1%;
+  padding-left: 2%;
+  background: rgba(235, 235, 235, 0.24);
+  min-height: 50%;
+  width: 50%;
+  overflow: scroll;
+}
+
+/* Icons */
+.desktop_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.desktop_icons img {
+  width: 6rem;
+}
+
+.icon_special {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Positioning icons */
+[data-name="nike_general"] {
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 3%;
+  flex-flow: column-reverse;
+  width: 5rem;
+
+}
+
+
+
+
+[data-name="nikeverse"] {
+
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 3%;
+  flex-flow: column;
+}
+
+[data-name="nikeverse"] img:first-child{
+  visibility: hidden;
+  align-items: center;
+  position: absolute;
+
+}
+
+.flameson{
+  visibility: visible;
+}
+
+[data-name="shop"] {
+
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  flex-flow: column;
+}
+
+[data-year="1974"] {
+
+  align-items: center;
+  position: absolute;
+  top: 80%;
+  left: 70%;
+  display: flex;
+  flex-flow: column;
+}
+
+[data-year="1982"] {
+
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  display: flex;
+  flex-flow: column;
+}
+
+[data-year="1984"] {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  display: flex;
+  flex-flow: column;
+}
+
+[data-year="2002"] {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 34%;
+  left: 70%;
+  display: flex;
+  flex-flow: column;
+}
+
+[data-year="2003"] {
+
+  align-items: center;
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  display: flex;
+  flex-flow: column;
+}
+
+/* Clippy */
+.clippy_container {
+  display: flex;
+  position: absolute;
+  width: auto;
+  top: 80%;
+  left: 80%;
+}
+
+.clippy_box {
+  position: absolute;
+}
+
+.clippy_container img {
+  width: 11em;
+}
+
+.speech_bubble {
+  position: absolute;
+  transform: translate(-30%, -70%);
+  min-width: 13rem;
+}
+
+/* found this online to ge the corner of the speech bubble */
+.speech_bubble:after {
+  transform: translate(3.75rem, -.625rem);
+  content: "";
+  position: absolute;
+  border: 20px solid transparent;
+  border-top-color: rgba(251, 249, 205, 255);
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: 30px;
+  margin-bottom: -2px;
+}
+
+#form_container {
+  padding: .500rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  border-radius: .938rem;
+  background: rgba(251, 249, 205, 255);
+  border: 1px solid black;
+  border-radius: 11px;
+}
+
+label[for="clippylook"] {
+  margin-top: 0.3 rem;
+  margin-bottom: 0.3 rem;
+  text-align: center;
+}
+
+input[type="search"] {
+  margin-top: 10px;
+  display: none;
+  width: .313rem;
+}
+
+.submit_box {
+  margin-top: 1%;
+  margin-bottom: 4%;
+  background-color: rgba(251, 249, 205, 255);
+}
+
+button:first-letter {
+  text-decoration: dotted underline black 1px;
+}
+
+button {
+  padding-left: 20px;
+  padding-right: 20px;
+  border: solid rgba(57, 55, 55, .25) 0.1px;
+  border-radius: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(251, 249, 205, 255);
+  cursor: pointer;
+  font-size: 12px;
+  color: black;
+}
+
+/* Animations */
+.distorttext {
+  animation-name: distorttext;
+  animation-duration: .1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes distorttext {
+  from {
+    text-shadow: 1px 0 0 #ea36af, -4px 0 0 #75fa69;
+  }
+
+  to {
+    text-shadow: 2px 0.5px 2px #ea36af, -4px -0.5px 2px #75fa69;
+  }
+}
