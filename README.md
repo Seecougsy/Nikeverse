@@ -4,23 +4,27 @@
 *Nikeverse Homepage showcasing interactive features.*
 
 ## Overview
-A visually engaging project showcasing iconic Nike shoes with interactive animations and pop-up details.
+University coursework presenting Nike shoes through the eras, featuring a vapourwave/ Windows XP-inspired aesthetic. The icons were adapted using Photoshop and Illustrator, and pokes fun at past visions of *'the future'* while celebrating Nike's innovation and its steps into NFTs and the metaverse. This project is not affiliated with Nike in any way and is intended solely for educational purposes.
 
 ## Features
 - Dynamic shoe information displayed in pop-up windows.
-- Retro-style animations powered by GSAP.
-- A "Clippy" helper for an engaging user experience.
+- Retro-style animations powered by GreenSock.
+- Nike buffering animation created in Adobe Adobe After Effects.
+- A "Clippy" helper (not fully functional) 
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript (jQuery, GSAP)
-- Lottie for animations
+- **HTML5**: For structuring the webpage content.  
+- **CSS3**: For styling and layout, including responsive designs.  
+- **JavaScript**: For interactivity and dynamic elements.  
+- **jQuery**: For simplifying DOM manipulation and event handling.  
+- **GSAP (Greensock)**: For creating animations.  
+- **Lottie**: For rendering animations.  
+- **Design Tools**: Adobe Photoshop, After Effects, and Illustrator for creating and adapting visual assets.  
 
 ## Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/project-name.git
+   git clone https://github.com/seecougsy/nikeverse.git
 
 ## Screenshots and Animations
 
