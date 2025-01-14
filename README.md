@@ -26,8 +26,6 @@ University coursework presenting Nike shoes through the eras, featuring a vapour
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
   <img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
   <img src="assets/gifs/Icon_animation.gif" alt="Icon Animation" width="800">
-  <img src="assets/screenshots/animations.gif" alt="Animations" style="width: 100%;">
-  <img src="assets/screenshots/mobile-view.jpg" alt="Mobile View" style="width: 100%;">
 </div>
 
 ## Setup Instructions
