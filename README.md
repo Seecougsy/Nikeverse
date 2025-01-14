@@ -1,11 +1,15 @@
-# Nike—Through the eras
-<img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
-*Nikeverse Homepage showcasing interactive features.*
+<img src="assets/images/heading_nike.png" alt="Nikeverse Homepage" width="100%">
 
+---
 ## Overview
 University coursework showcasing Nike shoes through the eras, a vapourwave and Windows XP-inspired aesthetic. Custom icons created in Photoshop and Illustrator—complete with intrusive pop-ups–a playful riff on past visions of 'the future' to celebrate Nike's innovation and venture into NFTs and the metaverse. This project is purely educational and not affiliated with Nike.
 
 🔗 [Visit Website]( https://seecougsy.github.io/Nikeverse)
+
+<img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
+*Nikeverse Homepage showcasing interactive features.*
+
+
 
 ## Features
 - Dynamic shoe information displayed in pop-up windows.
