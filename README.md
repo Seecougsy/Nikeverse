@@ -1,4 +1,4 @@
-<img src="assets/images/heading_nike.png" alt="Nikeverse Homepage" width="100%">
+<img src="assets/images/README_TEMPLATE (1).png" alt="Nikeverse Homepage" width="100%">
 
 ---
 ## Overview
