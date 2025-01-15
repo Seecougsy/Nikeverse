@@ -6,10 +6,11 @@ University coursework showcasing Nike shoes through the eras, a vapourwave and W
 
 🔗 [Visit Website]( https://seecougsy.github.io/Nikeverse)
 
+<p align="left">
 <img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
+
+</p>
 *Nikeverse Homepage showcasing interactive features.*
-
-
 
 ## Features
 - Dynamic shoe information displayed in pop-up windows.
