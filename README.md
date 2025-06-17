@@ -1,10 +1,20 @@
-<img src="assets/images/README_TEMPLATE (1).png" alt="Nikeverse Homepage" width="100%">
+![Location](https://img.shields.io/badge/Location-Brisbane%2C%20Australia-lightgrey.svg)
+![Last Commit](https://img.shields.io/github/last-commit/<user>/<repo>)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?logo=greensock&logoColor=white)
+![Lottie](https://img.shields.io/badge/Lottie-0096D8?logo=lottie&logoColor=white)
+![Responsive](https://img.shields.io/badge/Responsive-Mobile--first-5cb85c.svg)
+[![pages](https://img.shields.io/badge/View%20Demo-GitHub%20Pages-121013?logo=github)](https://seecougsy.github.io/Nikeverse/)
+
+
+![Project Banner Nikeverse fron-end](assets/images/nikeverse_readme_banner.png)
 ---
 ## Overview
 University coursework showcasing Nike shoes through the eras, a vapourwave and Windows XP-inspired aesthetic. Custom icons created in Photoshop and Illustrator—complete with intrusive pop-ups–a playful riff on past visions of 'the future' to celebrate Nike's innovation and venture into NFTs and the metaverse. This project is purely educational and not affiliated with Nike.
-
-🔗 [Visit Website]( https://seecougsy.github.io/Nikeverse)
 
 <p align="left">
 <img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
