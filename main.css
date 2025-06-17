@@ -4,7 +4,7 @@
    1. Base Styles
    ========================================================================== */
 body {
-  position : relative;
+  position: relative;
   background-attachment: fixed;
   background-color: #019090;
   background-image: url('IMG/desktop1 copy.jpg');
@@ -30,25 +30,19 @@ body {
 } */
 
 #lottie {
-  position: fixed; /* not affected by parents */
+  position: fixed;
+  /* not affected by parents */
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
   width: 500px;
   max-width: 90vw;
   z-index: 999;
-  pointer-events: none;  
-  animation: subtlePulse 3s ease-in-out infinite;
+  pointer-events: none;
+  animation: Pulse 3s ease-in-out infinite;
 }
 
-@keyframes subtlePulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px #ffffffb4);
-  }
-  50% {
-    filter: drop-shadow(0 0 15px #e9f6f774);
-  }
-}
+
 
 /* ==========================================================================
    3. Pop-up Windows
@@ -72,8 +66,9 @@ body {
 }
 
 .window {
-  z-index: 2000; 
-  width: 700px; /* increased from 600px */
+  z-index: 2000;
+  width: 700px;
+  /* increased from 600px */
   height: auto;
   background: #c0c0c0;
   padding: .5rem;
@@ -84,7 +79,11 @@ body {
   border-left-color: #dfdfdf;
   border-bottom-color: #404040;
   border-right-color: #404040;
-  box-shadow: inset -1px -1px 0 #000, inset 1px 1px 0 #fff;
+  box-shadow:
+  inset -1px -1px 0 #000,
+  inset 1px 1px 0 #fff,
+  2px 2px 0 #000, /* Win95 offset shadow */
+  0 0 12px rgba(0, 255, 255, 0.3); /* Vapourwave cyan glow */
 }
 
 
@@ -119,6 +118,7 @@ body {
   font-weight: bold;
   color: black;
 }
+
 .button:hover {
   background: #999;
 }
@@ -132,21 +132,23 @@ body {
 
 .description {
   padding: 1rem;
-  padding-bottom: 8rem; /* or more if needed */
+  padding-bottom: 8rem;
+  /* or more if needed */
   background: #c0c0c0;
   color: #000;
   font-size: 0.9rem;
   word-wrap: break-word;
- 
-  background: #c0c0c0; /* match window */
+
+  background: #c0c0c0;
+  /* match window */
   color: #000;
   font-size: 0.9rem;
 }
 
-.PopUp_container img{
+.PopUp_container img {
   width: 100%;
   height: auto;
-  image-rendering: pixelated; 
+  image-rendering: pixelated;
 }
 
 
@@ -169,7 +171,7 @@ body {
 /* Pop-up Title */
 h1 {
   color: #FFF;
-  font: 20px "Commuters Sans", normal;
+  font: 30px "Commuters Sans", normal;
   letter-spacing: 0;
   text-align: left;
 }
@@ -187,12 +189,12 @@ h2 {
 /* Pop-up Subheading */
 h3 {
   color: #0000FF;
-  font: 19px/12px Tahoma, normal;
+  font: 20px/12px Tahoma, normal;
   letter-spacing: 0;
   margin-top: 3%;
   text-align: left;
   text-decoration: underline;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 /* Clippy Form Label */
@@ -209,7 +211,7 @@ h4 {
 p {
   color: #000;
   font: 13px/15px Tahoma, normal;
-  height: 21px;
+  height: auto;
   letter-spacing: 0;
   left: 0;
   top: 1px;
@@ -222,7 +224,7 @@ p {
 .desktop_icons {
   /* you’ll override this with absolute positioning or grid at breakpoints */
   position: absolute;
-  width:  100vw;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -232,8 +234,10 @@ p {
   z-index: 1000;
   position: absolute;
   display: flex;
-  flex-direction: column;   /* image on top, label beneath */
-  align-items: center;      /* center both elements */
+  flex-direction: column;
+  /* image on top, label beneath */
+  align-items: center;
+  /* center both elements */
 }
 
 /* Fluid Image Sizing */
@@ -265,15 +269,41 @@ p {
    7. Absolute Positioning of Icons
    ========================================================================== */
 /* Year-folders */
-[data-year="1974"] { left: 70%;  position: absolute; top: 80%; left: 70%; }
-[data-year="1982"] { left: 80%;  position: absolute; top: 30%; }
-[data-year="1984"] { left: 80%;  position: absolute; top: 10%; }
-[data-year="2002"] { left: 70%;  position: absolute; top: 34%; }
-[data-year="2003"] { left: 20%;  position: absolute; top:  8%; }
+[data-year="1974"] {
+  left: 70%;
+  position: absolute;
+  top: 80%;
+  left: 70%;
+}
+
+[data-year="1982"] {
+  left: 80%;
+  position: absolute;
+  top: 30%;
+}
+
+[data-year="1984"] {
+  left: 80%;
+  position: absolute;
+  top: 10%;
+}
+
+[data-year="2002"] {
+  left: 70%;
+  position: absolute;
+  top: 34%;
+}
+
+[data-year="2003"] {
+  left: 20%;
+  position: absolute;
+  top: 8%;
+}
+
 #nike-general {
   width: 5rem;
   height: 5rem;
-   /* just to debug if it's even showing */
+  /* just to debug if it's even showing */
 }
 
 /* “Just Do It” */
@@ -388,6 +418,136 @@ button:first-letter {
    10. Animations
    ========================================================================== */
 @keyframes distorttext {
-  from   { text-shadow:  1px 0   0 #ea36af, -4px  0   0 #75fa69; }
-  to     { text-shadow:  2px 0.5px 2px #ea36af, -4px -0.5px 2px #75fa69; }
+  from {
+    text-shadow: 1px 0 0 #ea36af, -4px 0 0 #75fa69;
+  }
+
+  to {
+    text-shadow: 2px 0.5px 2px #ea36af, -4px -0.5px 2px #75fa69;
+  }
+}
+
+@keyframes Pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px #ffffffb4);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 15px #e9f6f774);
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .desktop_icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 1rem;
+    position: static;
+    padding-top: 2rem;
+  }
+
+  .desktop_icons .icon,
+  .desktop_icons .icon_special {
+    position: static;
+    width: 40%;
+  }
+
+  .desktop_icons .icon img,
+  .desktop_icons .icon_special img {
+    width: clamp(80px, 50vw, 100px);
+  }
+
+  .clippy_container {
+    display: none;
+  }
+
+  [data-name="nikeverse"] img:first-child {
+    display: none;
+  }
+
+  #lottie {
+    display: none;
+  }
+
+  .window {
+    background: #c0c0c0;
+    position: relative;
+    z-index: 2000;
+    width: 70vw;
+    max-height: none;           
+    height: auto;
+    overflow: visible;
+    box-sizing: border-box;
+    padding-bottom: 1.5rem;
+  }
+
+  .title {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: navy;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 2rem;
+  }
+
+  #shoe-image {
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+
+  .description {
+    padding: 1rem;
+    font-size: 0.95rem;
+    width: 100%;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+
+  p {
+    height: auto;
+    width: 100%;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 600px) {
+
+  body {
+    background-image: none !important;
+    background-color: #019090 !important;
+    background-attachment: fixed !important;  /* reset fixed */
+    overflow: hidden !important;
+      
+  }
+  .window {
+    min-width: 80vw;
+  }
+
+
+  
+
+
+
 }
