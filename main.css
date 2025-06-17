@@ -1,353 +1,314 @@
 @charset "UTF-8";
 
+/* ==========================================================================
+   1. Base Styles
+   ========================================================================== */
 body {
-  min-height: 100vh;
-  min-width: 100vw;
+  position : relative;
+  background-attachment: fixed;
+  background-color: #019090;
   background-image: url('IMG/desktop1 copy.jpg');
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
-  background-color: #019090;
   margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
   overflow: hidden;
 }
 
-
-#lottie{
-  position: absolute;
-  height: 34vh;
-  width: auto;
-}
-
-
-
-.main {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  display: flex;
+/* ==========================================================================
+   2. Utility / Layout
+   ========================================================================== */
+/* .main {
   align-items: center;
+  display: flex;
+  height: 100vh;
   justify-content: center;
-}
-
-/* AD POPUPS */
-
-
-/* .popup0 {
-  position: absolute;
-  z-index: 1;
-  border-radius: 3px 3px 0px 0px;
-padding: 79px 70px 60px 70px;
-border-top: solid 15px blue;
-height: auto;
-overflow: hidden;
+  margin: 0;
+  width: 100vw;
 } */
 
-
-/* .popup0 img{
-  border-top: solid 10px blue;
-background-color: grey;
-transform: scale(2.5);
-margin-top: -30px;
-overflow:hidden
-} */
-
-.popup1 {
-  position: absolute;
-  z-index: 1;
-  border-radius: 3px 3px 0px 0px;
-padding: 79px 70px 60px 70px;
-border-top: solid 15px blue;
-height: auto;
-overflow: hidden;
-
+#lottie {
+  position: fixed; /* not affected by parents */
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  max-width: 90vw;
+  z-index: 999;
+  pointer-events: none;  
+  animation: subtlePulse 3s ease-in-out infinite;
 }
 
-.popup1 img{
-
-  border-top: solid 10px blue;
-background-color: grey;
-transform: scale(2.5);
-margin-top: -30px;
-overflow:hidden
+@keyframes subtlePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px #ffffffb4);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px #e9f6f774);
+  }
 }
 
-.desktop_icon.popup0 {
-  width: 100%;
-  height: 200px;
-  position: absolute;
-
-border: solid 3px grey;
-
-
-}
-
-.desktop_icon.popup0 img{
-width: 59vw;
-height:auto;
-}
-
-
-
-
-
-.nike-logo {
-  position: absolute;
-  align-self: center;
-  justify-content: center;
-}
-
-.nike-logo img {
-  height: 30vh;
-  width: auto;
-}
-
-/* Text Styling */
-/* white Pop-up window type */
-h1 {
-  text-align: left;
-  font: normal normal normal 20px Commuters Sans;
-  letter-spacing: 0px;
-  color: rgba(255, 255, 255, 1);
-}
-
-/* white Icon text */
-h2 {
-  font: normal normal normal 13px Tahoma;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-  margin: 2px;
-}
-
-/* Blue subheading*/
-h3 {
-  margin-top: 3%;
-  text-align: left;
-  text-decoration: underline;
-  font: normal normal normal 19px/12px Tahoma;
-  letter-spacing: 0px;
-  color: #0000FF;
-  text-transform: uppercase;
-}
-
-h4 {
-  min-width: 60px;
-  min-height: 20px;
-  /* UI Properties */
-  text-align: center;
-  font: normal normal normal 12px/14px Tahoma;
-  letter-spacing: 0px;
-  color: #000000;
-}
-
-p {
-  /* Layout Properties */
-  top: 1px;
-  left: 0px;
-  width: 286px;
-  height: 21px;
-  /* UI Properties */
-  text-align: left;
-  font: normal normal normal 13px/15px Tahoma;
-  letter-spacing: 0px;
-  color: #000000;
-}
-
-/* Pop-up window */
+/* ==========================================================================
+   3. Pop-up Windows
+   ========================================================================== */
 .PopUp_container {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   visibility: hidden;
-  min-width: 42rem;
-  min-height: auto;
 }
 
 .PopUp_container_on {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   visibility: visible;
-  min-width: 42rem;
-  min-height: auto;
-}
-
-/* Not sure what the heck this does */
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .window {
-  border: solid rgba(189, 190, 198, 100) 2px;
-  border-style: outset;
-  background: rgba(189, 190, 198, 100);
-  flex-flow: row wrap;
-  box-shadow: 0 8px 6px -6px black;
+  z-index: 2000; 
+  width: 700px; /* increased from 600px */
+  height: auto;
+  background: #c0c0c0;
+  padding: .5rem;
+  padding-bottom: 1.2rem;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+  border: 2px solid #fff;
+  border-top-color: #dfdfdf;
+  border-left-color: #dfdfdf;
+  border-bottom-color: #404040;
+  border-right-color: #404040;
+  box-shadow: inset -1px -1px 0 #000, inset 1px 1px 0 #fff;
 }
+
+
 
 .title {
-  padding-left: 2.5%;
-  width: auto;
+  background: navy;
+  color: white;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 1.875rem;
-  background: transparent linear-gradient(90deg, rgba(10, 39, 104, 1) 0%, rgba(157, 195, 238, 1) 100%);
-  margin: .2%;
+  padding: 0.2rem 0.4rem;
+  height: 1.6rem;
+  border-bottom: 2px solid #000;
 }
 
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+
+
+.button {
+  background: silver;
+  border: 2px outset #fff;
+  padding: 0 0.6rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+}
+.button:hover {
+  background: #999;
+}
+
+
 .infoContainer {
+  display: flex;
   height: auto;
   width: auto;
-  display: flex;
 }
+
+.description {
+  padding: 1rem;
+  padding-bottom: 8rem; /* or more if needed */
+  background: #c0c0c0;
+  color: #000;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+ 
+  background: #c0c0c0; /* match window */
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.PopUp_container img{
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated; 
+}
+
 
 #shoe-image {
   display: flex;
-  border: solid #7070706E 2px;
-  border-style: inset;
-  overflow: hidden;
-  width: 50%;
-  height: auto;
-  overflow: hidden;
-  margin: 1%;
   justify-content: center;
   align-items: center;
-}
-
-.PopUp_container img {
-  width: 20rem;
-  height: auto;
-}
-
-
-
-.description {
-  border: solid #7070706E 2px;
-  border-style: inset;
-  margin: 1%;
-  padding-left: 2%;
-  background: rgba(235, 235, 235, 0.24);
-  min-height: 50%;
   width: 50%;
-  overflow: scroll;
+  margin: 1rem;
+  padding: 0.5rem;
+  background: #c0c0c0;
+  border: 2px inset #fff;
+  box-shadow: inset -1px -1px 0 #000, inset 1px 1px 0 #fff;
 }
 
-/* Icons */
+
+/* ==========================================================================
+   4. Typography
+   ========================================================================== */
+/* Pop-up Title */
+h1 {
+  color: #FFF;
+  font: 20px "Commuters Sans", normal;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+/* Desktop Icon Labels */
+h2 {
+  color: #FFF;
+  font: 13px Tahoma, normal;
+  letter-spacing: 0;
+  margin: 2px;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Pop-up Subheading */
+h3 {
+  color: #0000FF;
+  font: 19px/12px Tahoma, normal;
+  letter-spacing: 0;
+  margin-top: 3%;
+  text-align: left;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+/* Clippy Form Label */
+h4 {
+  color: #000;
+  font: 12px/14px Tahoma, normal;
+  letter-spacing: 0;
+  min-height: 20px;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Generic Paragraphs */
+p {
+  color: #000;
+  font: 13px/15px Tahoma, normal;
+  height: 21px;
+  letter-spacing: 0;
+  left: 0;
+  top: 1px;
+  width: 286px;
+}
+
+/* ==========================================================================
+   5. Desktop Icons Grid & Flex Helpers
+   ========================================================================== */
 .desktop_icons {
+  /* you’ll override this with absolute positioning or grid at breakpoints */
+  position: absolute;
+  width:  100vw;
+  height: 100vh;
+}
+
+/* Icon & Special-Icon Shared Styles */
+.desktop_icons .icon,
+.desktop_icons .icon_special {
+  z-index: 1000;
+  position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  flex-direction: column;   /* image on top, label beneath */
+  align-items: center;      /* center both elements */
 }
 
-.desktop_icons img {
-  width: 6rem;
+/* Fluid Image Sizing */
+.desktop_icons .icon img,
+.desktop_icons .icon_special img {
+  display: block;
+  margin: 0 auto;
+  width: clamp(40px, 8vw, 80px);
+  height: auto;
 }
 
-.icon_special {
-  display: flex;
-  flex-direction: column-reverse;
+[data-name="nike_general"] img,
+[data-name="nike_general"] svg {
+  display: block;
+  margin: 0 auto;
+  width: clamp(40px, 8vw, 80px);
+  height: auto;
 }
 
-/* Positioning icons */
+/* ==========================================================================
+   6. Special Icon Overrides
+   ========================================================================== */
+.desktop_icons .icon_special h2 {
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   7. Absolute Positioning of Icons
+   ========================================================================== */
+/* Year-folders */
+[data-year="1974"] { left: 70%;  position: absolute; top: 80%; left: 70%; }
+[data-year="1982"] { left: 80%;  position: absolute; top: 30%; }
+[data-year="1984"] { left: 80%;  position: absolute; top: 10%; }
+[data-year="2002"] { left: 70%;  position: absolute; top: 34%; }
+[data-year="2003"] { left: 20%;  position: absolute; top:  8%; }
+#nike-general {
+  width: 5rem;
+  height: 5rem;
+   /* just to debug if it's even showing */
+}
+
+/* “Just Do It” */
 [data-name="nike_general"] {
+  left: 3%;
+  display: flex;
   align-items: center;
+  flex-direction: column-reverse;
   position: absolute;
   top: 10%;
-  left: 3%;
-  flex-flow: column-reverse;
-  width: 5rem;
-
+  width: clamp(40px, 8vw, 80px);
 }
 
-
-
-
+/* Nike-Verse */
 [data-name="nikeverse"] {
-
-  align-items: center;
+  left: 3%;
   position: absolute;
   top: 30%;
-  left: 3%;
-  flex-flow: column;
 }
 
-[data-name="nikeverse"] img:first-child{
-  visibility: hidden;
-  align-items: center;
-  position: absolute;
-
-}
-
-.flameson{
-  visibility: visible;
-}
-
+/* Shop */
 [data-name="shop"] {
-
-  align-items: center;
+  left: 3%;
   position: absolute;
   top: 50%;
-  left: 3%;
-  flex-flow: column;
 }
 
-[data-year="1974"] {
-
-  align-items: center;
-  position: absolute;
-  top: 80%;
-  left: 70%;
-  display: flex;
-  flex-flow: column;
-}
-
-[data-year="1982"] {
-
-  align-items: center;
-  position: absolute;
-  top: 30%;
-  left: 80%;
-  display: flex;
-  flex-flow: column;
-}
-
-[data-year="1984"] {
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 10%;
-  left: 80%;
-  display: flex;
-  flex-flow: column;
-}
-
-[data-year="2002"] {
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 34%;
-  left: 70%;
-  display: flex;
-  flex-flow: column;
-}
-
-[data-year="2003"] {
-
-  align-items: center;
-  position: absolute;
-  top: 8%;
-  left: 20%;
-  display: flex;
-  flex-flow: column;
-}
-
-/* Clippy */
+/* ==========================================================================
+   8. Clippy Chat Bubble
+   ========================================================================== */
 .clippy_container {
   display: flex;
-  position: absolute;
-  width: auto;
-  top: 80%;
   left: 80%;
+  position: absolute;
+  top: 80%;
 }
 
 .clippy_box {
@@ -359,85 +320,74 @@ p {
 }
 
 .speech_bubble {
+  min-width: 13rem;
   position: absolute;
   transform: translate(-30%, -70%);
-  min-width: 13rem;
 }
 
-/* found this online to ge the corner of the speech bubble */
 .speech_bubble:after {
-  transform: translate(3.75rem, -.625rem);
-  content: "";
-  position: absolute;
   border: 20px solid transparent;
-  border-top-color: rgba(251, 249, 205, 255);
   border-bottom: 0;
   border-right: 0;
-  margin-left: 30px;
+  border-top-color: rgba(251, 249, 205, 1);
+  content: "";
   margin-bottom: -2px;
+  margin-left: 30px;
+  position: absolute;
+  transform: translate(3.75rem, -0.625rem);
 }
 
+/* ==========================================================================
+   9. Form & Buttons
+   ========================================================================== */
 #form_container {
-  padding: .500rem;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  flex-flow: column;
-  border-radius: .938rem;
-  background: rgba(251, 249, 205, 255);
+  background: rgba(251, 249, 205, 1);
   border: 1px solid black;
   border-radius: 11px;
+  display: flex;
+  flex-flow: column;
+  padding: 0.5rem;
 }
 
 label[for="clippylook"] {
-  margin-top: 0.3 rem;
-  margin-bottom: 0.3 rem;
+  margin: 0.3rem 0;
   text-align: center;
 }
 
 input[type="search"] {
-  margin-top: 10px;
   display: none;
-  width: .313rem;
+  margin-top: 10px;
+  width: 0.313rem;
 }
 
 .submit_box {
-  margin-top: 1%;
-  margin-bottom: 4%;
-  background-color: rgba(251, 249, 205, 255);
+  background-color: rgba(251, 249, 205, 1);
+  margin: 1% 0 4% 0;
+}
+
+button {
+  align-items: center;
+  background-color: rgba(251, 249, 205, 1);
+  border: solid rgba(57, 55, 55, .25) 0.1px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 12px;
+  justify-content: center;
+  padding: 0 20px;
+  text-decoration: none;
+  width: auto;
 }
 
 button:first-letter {
   text-decoration: dotted underline black 1px;
 }
 
-button {
-  padding-left: 20px;
-  padding-right: 20px;
-  border: solid rgba(57, 55, 55, .25) 0.1px;
-  border-radius: 6px;
-  justify-content: flex-start;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(251, 249, 205, 255);
-  cursor: pointer;
-  font-size: 12px;
-  color: black;
-}
-
-/* Animations */
-.distorttext {
-  animation-name: distorttext;
-  animation-duration: .1s;
-  animation-iteration-count: infinite;
-}
-
+/* ==========================================================================
+   10. Animations
+   ========================================================================== */
 @keyframes distorttext {
-  from {
-    text-shadow: 1px 0 0 #ea36af, -4px 0 0 #75fa69;
-  }
-
-  to {
-    text-shadow: 2px 0.5px 2px #ea36af, -4px -0.5px 2px #75fa69;
-  }
+  from   { text-shadow:  1px 0   0 #ea36af, -4px  0   0 #75fa69; }
+  to     { text-shadow:  2px 0.5px 2px #ea36af, -4px -0.5px 2px #75fa69; }
 }
