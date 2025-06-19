@@ -2,6 +2,7 @@
 ![Last Commit](https://img.shields.io/github/last-commit/<user>/<repo>)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -16,10 +17,7 @@
 ## Overview
 University coursework showcasing Nike shoes through the eras, a vapourwave and Windows XP-inspired aesthetic. Custom icons created in Photoshop and Illustrator—complete with intrusive pop-ups–a playful riff on past visions of 'the future' to celebrate Nike's innovation and venture into NFTs and the metaverse. This project is purely educational and not affiliated with Nike.
 
-<p align="left">
-<img src="assets/images/nikeverse_homepage.jpg" alt="Nikeverse Homepage" width="800">
-
-</p>
+![Demo of the app](assets/images/nikeverse_homepage.jpg)
 *Nikeverse Homepage showcasing interactive features.*
 
 ## Features

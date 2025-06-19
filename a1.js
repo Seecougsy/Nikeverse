@@ -128,7 +128,7 @@ $(document).ready(function () {
   // *** This code triggers all windows close when user clicks off screen
   // *** I saw this on the internet. It doesnt seem "proper" but right now it works lol //
 
-  $(document).on("click", function (event) {
+  $("#close-popup").on("click", function (event) {
     if ($(event.target).closest(".icon").length == 0) {
       // <---
       $(".PopUp_container_on").removeClass("PopUp_container_on");
@@ -138,41 +138,6 @@ $(document).ready(function () {
       });
     }
   });
-
-  //  *** 🚀 DISTORT FUNCTION ANIMATION *** //
-
-  var backgroundOrig = $("body").css("background-image"); // <---- I'll use this variable in the function to reset the Image back, "dynamically" hehe
-  console.log(backgroundOrig); // <---- testing it
-
-  function distort() {
-    // Reset animation states //
-    $(".desktop_icons").removeClass("distorttext");
-    $(".title").removeClass("distorttext");
-    $(".description").removeClass("distorttext");
-    $("body").css("background-image", backgroundOrig);
-
-    // Add animation //
-    $(".description").addClass("distorttext");
-    $(".title").addClass("distorttext");
-    $(".desktop_icons").addClass("distorttext");
-    $("body").css("background-image", "url(IMG/desktop1-glitch.jpg)");
-
-    setTimeout(distort, 14000); // <---- after this time has passed
-    console.log("Glitch-on");
-  }
-
-  // This turns it off... because I don't wanna crash your computer lol//
-  function distortremove() {
-    $(".title").removeClass("distorttext");
-    $(".description").removeClass("distorttext");
-    $(".desktop_icons").removeClass("distorttext");
-    $("body").css("background-image", backgroundOrig);
-    setTimeout(distortremove, 9000); //<---- after this time has passed
-    console.log("Glitch-off");
-  }
-
-  distort(); // <---- calling the function
-  distortremove(); // <---- calling the function
 
   function Clippyshow() {
     "main.css";
@@ -476,7 +441,6 @@ fetch("nike-animation.json")
   })
   .catch(console.error);
 
-
 //  Opening animation //
 var openinganimation = gsap.timeline({});
 
@@ -558,30 +522,6 @@ openinganimation
     visibility: "hidden",
   }); // <--- After complete, hide this
 
-// //  NIKE ICON ANIMATION 🚩🚩
-// // Load nike-general.json Lottie animation
-// lottie.loadAnimation({
-//   container: document.querySelector("[data-name='nike_general']"),,
-//   renderer: 'svg',
-//   loop: true,
-//   autoplay: true,
-//   path: 'nike-general.json' // adjust if your file is in a different folder
-// });
-
-
-// var params = {
-//   container: document.querySelector("[data-name='nike_general']"),
-//   renderer: "svg",
-//   loop: false,
-//   autoplay: true,
-//   animationData: animationData,
-// };
-
-// var iconAnim;
-
-// iconAnim = lottie.loadAnimation(params);
-// iconAnim.play();
-// iconAnim.stop();
 
 // NIKE GENERAL ICON LOTTIE ANIMATION
 var iconAnim = lottie.loadAnimation({

@@ -35,11 +35,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  width: 500px;
+  width: 250px;
   max-width: 90vw;
   z-index: 999;
   pointer-events: none;
-  animation: Pulse 3s ease-in-out infinite;
+  animation: Pulse 7s ease-in-out infinite;
 }
 
 
@@ -126,8 +126,6 @@ body {
 
 .infoContainer {
   display: flex;
-  height: auto;
-  width: auto;
 }
 
 .description {
@@ -138,11 +136,6 @@ body {
   color: #000;
   font-size: 0.9rem;
   word-wrap: break-word;
-
-  background: #c0c0c0;
-  /* match window */
-  color: #000;
-  font-size: 0.9rem;
 }
 
 .PopUp_container img {
@@ -222,22 +215,23 @@ p {
    5. Desktop Icons Grid & Flex Helpers
    ========================================================================== */
 .desktop_icons {
-  /* you’ll override this with absolute positioning or grid at breakpoints */
-  position: absolute;
+
   width: 100vw;
   height: 100vh;
+
 }
 
 /* Icon & Special-Icon Shared Styles */
 .desktop_icons .icon,
 .desktop_icons .icon_special {
-  z-index: 1000;
-  position: absolute;
   display: flex;
   flex-direction: column;
-  /* image on top, label beneath */
   align-items: center;
-  /* center both elements */
+  position: absolute;
+  z-index: 1000;
+  
+  
+
 }
 
 /* Fluid Image Sizing */
@@ -273,7 +267,6 @@ p {
   left: 70%;
   position: absolute;
   top: 80%;
-  left: 70%;
 }
 
 [data-year="1982"] {
@@ -312,6 +305,7 @@ p {
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
+  align-items: center;
   position: absolute;
   top: 10%;
   width: clamp(40px, 8vw, 80px);
