@@ -328,7 +328,7 @@ p {
 /* ==========================================================================
    8. Clippy Chat Bubble
    ========================================================================== */
-.clippy_container {
+/* .clippy_container {
   display: flex;
   left: 80%;
   position: absolute;
@@ -337,11 +337,11 @@ p {
 
 .clippy_box {
   position: absolute;
-}
+} */
 
-.clippy_container img {
+/* .clippy_container img {
   width: 11em;
-}
+} */
 
 .speech_bubble {
   min-width: 13rem;
