@@ -1,136 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSF100:Assesment 2</title>
+    <link href="main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/rmg4qwb.css" />
 
-  <title>JSF100:Assesment 2</title>
-  <link href="main.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.typekit.net/rmg4qwb.css" />
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- GSAP Library  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+      integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-  <!-- GSAP Library  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
-    integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom ease -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/EasePack.min.js"></script>
 
-  <!-- Custom ease -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/EasePack.min.js"></script>
+    <!-- Lottie Library  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"
+      integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
 
-  <!-- Lottie Library  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"
-    integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
-
-<body>
-  <div class="main">
-    <header>
-      <div class="start-bar">
-        <img class="logo" src="IMG/Nike_metalic_logo.png" alt="logo">
-        <h1 class="start">Start</h1>
-      </div>
-
-    <div class="quick-launch">
-      <div class="divider"></div>
-      <img class="spaceman" src="IMG/Desktop_icons/nikeverse_icon.png" alt="icon">
-      <img class="shopping" src="IMG/Desktop_icons/shop_icon.png"alt="icon">
-      <img class="nikelogo" src="IMG/Nike_metalic_logo.png"alt="icon">
-      <img class="clip" src="IMG/Desktop_icons/clippy_icon.png"alt="icon">
-    </div>
-
-
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Shop</a></li>
-        <li><a href="#">NIKE-VERSE</a></li>
-        </ul>
-      </nav>
-      <a class="cta" href="#"><button>Contact</button></a>
-
-
-
-    </header>
-    <div id="lottie"></div>
-
-    <!-- Desktop icons -->
-    <div class="desktop_icons">
-      <div class="icon" data-year="1974">
-        <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1974" />
-        <h2>1974</h2>
-      </div>
-
-      <div class="icon" data-year="1982">
-        <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1982" />
-        <h2>1982</h2>
-      </div>
-
-      <div class="icon" data-year="1984">
-        <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1984" />
-        <h2>1984</h2>
-      </div>
-
-      <div class="icon" data-year="2002">
-        <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="" />
-        <h2>2002</h2>
-      </div>
-
-      <div class="icon" data-year="2003">
-        <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="2003" />
-        <h2>2003</h2>
-      </div>
-
-      <!-- Special icons -->
-      <div class="icon_special" data-name="nike_general">
-        <div id="nike-general"></div>
-        <h2>JUST DO IT</h2>
-      </div>
-
-      <div class="icon_special" data-name="nikeverse">
-        <img src="IMG/Desktop_icons/fire.png" alt="" />
-        <img src="IMG/Desktop_icons/nikeverse_icon.png" alt="" />
-        <h2>NIKE-VERSE</h2>
-      </div>
-
-      <div class="icon_special" data-name="shop">
-        <img src="IMG/Desktop_icons/shop_icon.png" alt="" />
-        <h2>SHOP NIKE</h2>
-      </div>
-    </div>
-
-
-    <div class="PopUp_container">
-      <div class="window">
-        <div class="title">
-          <div class="title-left">
-            <span class="title-text">Nike SB (Skate Boarding) — 2002</span>
-          </div>
-          <div class="button" id="close-popup">X</div>
-        </div>
-
-        <div class="infoContainer">
-          <div class="image_container" id="shoe-image">
-            <img src="IMG/Shoes/1.jpg" alt="" />
-          </div>
-          <div class="description">
-            <h3>FROM COURTS TO CONCRETE</h3>
-            With the Skateboarding market growing at rapid speeds, Nike
-            launched their SB line March 2002. To attract skaters, Nike
-            advertised in magazines like Transworld Skateboarding magazine
-            and Thrasher magazine. After a while, Nike SB (Skateboarding)
-            started to hand out catalogs to some of the hardcore skate
-            shops.
+  <body>
+    <div class="main">
+      <header>
+        <div class="start-menu-container">
+          <button class="start-bar">
+            <img class="logo" src="IMG/Nike_metalic_logo.png" alt="logo" />
+            <h1 class="start">Start</h1>
+          </button>
+          <div class="dropdown-menu">
+            <ul>
+            <li><a href="#" role="menuitem">Nikeverse</a></li>
+            <li><a href="#" role="menuitem">Shop</a></li>
+            <li><a href="#" role="menuitem">Contact Us</a></li>
+          </ul>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- TODO: Add clippy one day  -->
-    <!-- <div class="clippy_container">
+        <div class="quick-launch">
+          <div class="divider"></div>
+          <img
+            class="spaceman"
+            src="IMG/Desktop_icons/nikeverse_icon.png"
+            alt="icon"
+          />
+          <img
+            class="shopping"
+            src="IMG/Desktop_icons/shop_icon.png"
+            alt="icon"
+          />
+          <img class="nikelogo" src="IMG/Nike_metalic_logo.png" alt="icon" />
+          <img
+            class="clip"
+            src="IMG/Desktop_icons/clippy_icon.png"
+            alt="icon"
+          />
+        </div>
+
+        <a class="cta" href="#"><button>Contact</button></a>
+      </header>
+      <div id="lottie"></div>
+
+      <!-- Desktop icons -->
+      <div class="desktop_icons">
+        <div class="icon" data-year="1974">
+          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1974" />
+          <h2>1974</h2>
+        </div>
+
+        <div class="icon" data-year="1982">
+          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1982" />
+          <h2>1982</h2>
+        </div>
+
+        <div class="icon" data-year="1984">
+          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1984" />
+          <h2>1984</h2>
+        </div>
+
+        <div class="icon" data-year="2002">
+          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="" />
+          <h2>2002</h2>
+        </div>
+
+        <div class="icon" data-year="2003">
+          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="2003" />
+          <h2>2003</h2>
+        </div>
+
+        <!-- Special icons -->
+        <div class="icon_special" data-name="nike_general">
+          <div id="nike-general"></div>
+          <h2>JUST DO IT</h2>
+        </div>
+
+        <div class="icon_special" data-name="nikeverse">
+          <img src="IMG/Desktop_icons/fire.png" alt="" />
+          <img src="IMG/Desktop_icons/nikeverse_icon.png" alt="" />
+          <h2>NIKE-VERSE</h2>
+        </div>
+
+        <div class="icon_special" data-name="shop">
+          <img src="IMG/Desktop_icons/shop_icon.png" alt="" />
+          <h2>SHOP NIKE</h2>
+        </div>
+      </div>
+
+      <div class="PopUp_container">
+        <div class="window">
+          <div class="title">
+            <div class="title-left">
+              <span class="title-text">Nike SB (Skate Boarding) — 2002</span>
+            </div>
+            <div class="button" id="close-popup">X</div>
+          </div>
+
+          <div class="infoContainer">
+            <div class="image_container" id="shoe-image">
+              <img src="IMG/Shoes/1.jpg" alt="" />
+            </div>
+            <div class="description">
+              <h3>FROM COURTS TO CONCRETE</h3>
+              With the Skateboarding market growing at rapid speeds, Nike
+              launched their SB line March 2002. To attract skaters, Nike
+              advertised in magazines like Transworld Skateboarding magazine and
+              Thrasher magazine. After a while, Nike SB (Skateboarding) started
+              to hand out catalogs to some of the hardcore skate shops.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODO: Add clippy one day  -->
+      <!-- <div class="clippy_container">
       <div class="speech_bubble">
         <form id="form_container">
           <label for="clippylook">
@@ -150,11 +163,10 @@
 
     </div> -->
 
-    <div id="lottie2"></div>
-  </div>
-  <!-- Main div -->
+      <div id="lottie2"></div>
+    </div>
+    <!-- Main div -->
 
-  <script src="a1.js"></script>
-</body>
-
+    <script src="a1.js"></script>
+  </body>
 </html>
