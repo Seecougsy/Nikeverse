@@ -6,6 +6,24 @@
 
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/ms_sans_serif.woff") format("woff");
+  src: url("fonts/ms_sans_serif.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  src: url("fonts/ms_sans_serif_bold.woff") format("woff");
+  src: url("fonts/ms_sans_serif_bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
 /* ==========================================================================
    1. Base Styles
    ========================================================================== */
@@ -68,31 +86,89 @@
     inset 1px 1px var(--button-face),
     inset -2px 0 var(--button-shadow),
     inset 2px 2px var(--button-highlight)
+
+
+     /* —— Font stacks —— */
+      --font-ui:       "Pixelated MS Sans Serif", Arial, sans-serif;
+      --font-win:      Tahoma, "MS Sans Serif", sans-serif;
+
+      /* —— Font sizes & line-heights —— */
+      --fs-body:       13px;
+      --lh-body:       15px;
+      --fs-subhead:    20px;
+      --lh-subhead:    12px;
+
+      /* —— Colors —— */
+      --color-body:    #000000;
+      --color-link:    #0000ff;
+        
+   /* h3 {
+    color: #0000ff;
+    font: 20px/12px Tahoma, normal;
+    letter-spacing: 0;
+    margin-top: 3%;
+    text-align: left;
+    text-decoration: underline;
+   
+  }  */
+
+  
+
+  
+  /* p {
+    color: #000;
+    font: 13px/15px Tahoma, normal;
+    height: auto;
+    letter-spacing: 0;
+    left: 0;
+    top: 1px;
+    width: 286px;
+  } */
 }
 
+html {
 
-@font-face {
-  font-family: "Pixelated MS Sans Serif";
-  src: url("fonts/ms_sans_serif.woff") format("woff");
-  src: url("fonts/ms_sans_serif.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
+font-family: var(--font-ui); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-body);
+  
+}
+h3 {
+  font: var(--fs-subhead)/var(--lh-subhead) var(--font-win);
+  color: var(--color-link);
+  margin-top: 3%;
+  text-decoration: underline;
 }
 
-@font-face {
-  font-family: "Pixelated MS Sans Serif";
-  src: url("fonts/ms_sans_serif_bold.woff") format("woff");
-  src: url("fonts/ms_sans_serif_bold.woff2") format("woff2");
+/* Generic Paragraphs */
+p {
+  font: var(--fs-body)/var(--lh-body) var(--font-win);
+  color: var(--color-body);
+  /* let the container dictate width & positioning */
+}
+
+button, input, select, textarea {
+  display: inline-flex;      /* preserve your flex settings */
+  align-items: center;
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+}
+
+header .nav-links a {
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+}
+
+.start {
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
   font-weight: bold;
-  font-style: normal;
+}
+
+.desktop_icons .icon h2 {
+  font: var(--fs-sm)/1 var(--font-win);
+  color: var(--color-body);
 }
 
 
 
-   body {
-  font-family: "Pixelated MS Sans Serif";
-  font-size: 12px;
-  -webkit-font-smoothing: none;
+body {
+
   color: var(--text-color);
   position: relative;
   background-attachment: fixed;
@@ -120,7 +196,7 @@ button {
   border-radius: 0;
   padding: 0 12px;
   min-height: 23px;
-  text-shadow: 0 0 var(--text-color);
+ 
 }
 
   li, a {
@@ -434,37 +510,7 @@ h2 {
   text-shadow: 1px 1px 2px black;
 }
 
-/* Pop-up Subheading */
-h3 {
-  color: #0000ff;
-  font: 20px/12px Tahoma, normal;
-  letter-spacing: 0;
-  margin-top: 3%;
-  text-align: left;
-  text-decoration: underline;
-  /* text-transform: uppercase; */
-}
 
-/* Clippy Form Label
-h4 {
-  color: #000;
-  font: 12px/14px Tahoma, normal;
-  letter-spacing: 0;
-  min-height: 20px;
-  min-width: 60px;
-  text-align: center;
-} */
-
-/* Generic Paragraphs */
-p {
-  color: #000;
-  font: 13px/15px Tahoma, normal;
-  height: auto;
-  letter-spacing: 0;
-  left: 0;
-  top: 1px;
-  width: 286px;
-}
 
 /* ==========================================================================
    5. Desktop Icons Grid & Flex Helpers
