@@ -11,9 +11,9 @@ $(document).ready(function () {
       shoeName: "Nike Moon Shoe",
       year: 1974,
       shoeHistory:
-        "The first Nike shoe was nicknamed the Moon Shoe and was made in Bowerman’s waffle iron. This waffle sole design came into fruition after Bill Bowerman was eating breakfast and wondering if the grooves in his waffle would work for additional traction when playing sports. After a few test runs of the waffle iron, the Waffle Trainer was eventually born and found almost immediate success due to its grippy and performance-driven design. This first prototype model was  technically the first Nike shoe and sold at Sotheby’s for almost $450,000.",
+        "The first Nike shoe was nicknamed <i>The Moon Shoe</i> and was made in Bowerman’s waffle iron. This waffle sole design came into fruition after Bill Bowerman was eating breakfast and wondering if the grooves in his waffle would work for additional traction when playing sports. After a few test runs of the waffle iron, the Waffle Trainer was eventually born and found almost immediate success due to its grippy and performance-driven design. This first prototype model was  technically the first Nike shoe and sold at Sotheby’s for almost $450,000.",
       shoeCat: ["runner", "sports", 1974],
-      title: "It began with Waffles",
+      title: "It Began With Waffles...",
       image: "IMG/Shoes/1.jpg",
     },
     {
@@ -22,7 +22,7 @@ $(document).ready(function () {
       shoeHistory:
         "The Nike Air Force 1 debut in 1982, and even though the shoe is made for basketball, it is more of a shoe for style. In 1982 when Nike Air Force 1 first released, the Nike Air Force 1 was the first model to have Nike Air technology. In the 1980’s the Nike AF1 was popular like they are till this day. Nike Air Force 1 was named after the Air Force One plane that the President of the United States flys in. In the early 1990’s the Nike Air Force 1 lost some popularity, but in the later 1990’s and 2000’s the AF1 made a come back.",
       shoeCat: ["basketball", "style", "fashion", "sports", 1982],
-      title: "A shoe for Style",
+      title: "A Shoe For Style...",
       image: "IMG/Shoes/2.jpg",
     },
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         "jordan",
         1984,
       ],
-      title: "Sports Star Exclusive",
+      title: "Sports Star Exclusive...",
       image: "IMG/Shoes/3.jpg",
     },
     {
@@ -48,7 +48,7 @@ $(document).ready(function () {
       shoeHistory:
         "With the Skateboarding market growing at rapid speeds, Nike launched their SB line March 2002. To attract skaters, Nike advertised in magazines like Transworld Skateboarding magazine and Thrasher magazine. After a while, Nike SB (Skateboarding) started to hand out catalogs to some of the hardcore skate shops.",
       shoeCat: ["skate boarding", "fashion", "skate", 2002],
-      title: "From Courts to Concrete",
+      title: "From Courts To Concrete...",
       image: "IMG/Shoes/4.jpg",
     },
     {
@@ -57,7 +57,7 @@ $(document).ready(function () {
       shoeHistory:
         "A young player (at the time 18 years old) in the NBA, Lebron James starting his career out needed a good sneaker. As we know Nike signed the very talented athlete. Lebron’s first shoe was the Nike Air Zoom Generation, also known as the LBJ I released right before the 2003-2004 NBA Season",
       shoeCat: ["basketball", "lebron james", "lebron", "james"],
-      title: "A 'shoe-in'",
+      title: "A <i>'Shoe-in'</i>...",
       image: "IMG/Shoes/5.jpg",
     },
   ];
