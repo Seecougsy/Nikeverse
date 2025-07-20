@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // All of your code goes here
-
+  gsap.registerPlugin(InertiaPlugin);
   console.log("hello world");
 
   // *** 👟 SHOE OBJECTS *** //
@@ -167,7 +167,7 @@ tl1
       duration: 0.4,
       scaleX: 0.9,
       scaleY: 1,
-      Ease: "steps(4)",
+      ease: "steps(4)",
     },
     0
   )
@@ -177,7 +177,7 @@ tl1
       duration: 0.4,
       scaleX: 1,
       scaleY: 1,
-      Ease: "steps(4)",
+      ease: "steps(4)",
     },
     0
   )
@@ -186,7 +186,7 @@ tl1
     {
       duration: 0,
       opacity: 0,
-      Ease: "steps(10)",
+      ease: "steps(10)",
     },
     0.1
   )
@@ -195,7 +195,7 @@ tl1
     {
       duration: 0.1,
       opacity: 0,
-      Ease: "steps(10)",
+      ease: "steps(10)",
     },
     0.5
   )
@@ -204,7 +204,7 @@ tl1
     {
       duration: 0.2,
       opacity: 0,
-      Ease: "steps(3)",
+      ease: "steps(3)",
     },
     0.9
   );
@@ -221,7 +221,7 @@ clippytl
     scale: 0,
     duration: 0.2,
     opacity: 0,
-    Ease: "step(3)",
+    ease: "step(3)",
   })
 
   .from(
@@ -230,7 +230,7 @@ clippytl
       duration: 0.5,
       scaleX: 0.5,
       scaleY: 0,
-      Ease: "Power1",
+      ease: "Power1",
     },
     1
   )
@@ -240,7 +240,7 @@ clippytl
       duration: 0.3,
       scaleX: 1,
       scaleY: 1,
-      Ease: "Power1",
+      ease: "Power1",
     },
     1
   );
@@ -260,8 +260,27 @@ var nikeversechildren = $("[data-name='nikeverse']").children().not("h2");
 var flames = $('[data-name="nikeverse"] img:first-child');
 var shopchildren = $("[data-name='shop']").children().not("h2");
 
+// ===== NIKE VERSE ANIMATION GSAP START=======
+
 var nikeverse = gsap.timeline({
+  paused: true,
+  reversed: true,
   yoyo: true,
+  repeat: 0,
+  onStart: () => nv.css("pointer-events",""),
+      onComplete() {
+      gsap.to(nikeversechildren, {
+        y:        0,
+        rotation: 0,
+        ease:     "power2.in",
+        duration: 0.2
+      });
+      gsap.set(flames, { visibility: "hidden" });
+    },
+  onReverseComplete: () => {
+  // remove GSAP's inline transform so your CSS transform can take effect
+  gsap.set(nikeversechildren, { clearProps: "transform" });
+}
 });
 
 nikeverse
@@ -276,50 +295,56 @@ nikeverse
   .to(
     nikeversechildren,
     {
-      duration: 1,
-      rotation: "8_short",
-      y: -25,
-      x: 3,
-      ease: "steps(2)",
+      y: "-=10",
+      rotation: -6,
+      duration: 0.2,
+      ease: "power4.out",
     },
     0
   )
 
-  .to(nikeversechildren, {
-    duration: 1,
-    ease: "steps(2)",
-    y: -22,
-    x: -10,
-    rotation: "-2_short",
-  })
-  .to(nikeversechildren, {
-    duration: 1,
-    rotation: "8_short",
-    y: -25,
-    x: 3,
-    ease: "steps(2)",
-  })
+    .to(
+    flames,
+    {
+      visibility: "hidden",
+    },
+    .1
+  )
 
-  .to(nikeversechildren, {
-    duration: 1,
-    ease: "steps(2)",
-    y: -27,
-    x: -3,
-    rotation: "-9_short",
-  })
+      .to(
+    flames,
+    {
+      visibility: "visible",
+    },
+    .2
+  )
 
-  .to(nikeversechildren, {
-    duration: 0.5,
-    ease: "steps(2)",
-    y: -8,
-    x: -2,
-    rotation: "-3_short",
-  });
+  .to(
+    nikeversechildren,
+    {
+      inertia: {
+        y: {
+          velocity: -600,
+          resistance: 100,
+          end: -35,
+        },
+      },
+    },
+    0.2
+  )
 
-nikeverse.to(flames, {
-  visibility: "hidden",
-});
-nikeverse.pause();
+  .to(
+    nikeversechildren,
+    {
+      rotation: 2,
+      duration: 0.9,
+      ease: "elastic.out(1, 0.5)",
+    },
+    0.2
+  )
+  .pause();
+
+
 
 // 🚩🚩 TO DOOOOOO
 var shop = gsap.timeline({ yoyo: true });
@@ -361,16 +386,24 @@ shop
 
 shop.pause();
 
+const nv = $(".icon_special[data-name='nikeverse']");
+
 //  EvENT HANDLERS
-$("[data-name='nikeverse']").on("mouseenter", function () {
-  nikeverse.play(0);
-  console.log("nikeverse");
+nv.on("mouseenter", function () {
+  if (!nikeverse.isActive()){
+    nikeverse.restart();
+    console.log("nikeverse");
+  }
+
 });
 
-$("[data-name='nikeverse']").on("mouseleave", function () {
-  nikeverse.reverse();
-  console.log("nikeverse");
-});
+// nv.on("mouseleave", function () {
+//   if (!nikeverse.reversed()){
+//     nikeverse.reverse();
+//     console.log("nikeverse");
+//   }
+
+// });
 
 $("[data-name='shop']").on("mouseenter", function () {
   shop.play(0);
@@ -428,100 +461,101 @@ $("[data-name='nike_general']").on("mouseleave", function () {
 
 // MAIN Nike progress bar logo animation 🚀🚀
 
-fetch("nike-animation.json")
-  .then((res) => res.json())
-  .then((animationData) => {
-    lottie.loadAnimation({
-      container: document.getElementById("lottie"),
-      renderer: "svg",
-      loop: false,
-      autoplay: true,
-      animationData,
-    });
-  })
-  .catch(console.error);
+// TURN ON, INITIAL ANIMATION ###############
 
-//  Opening animation //
-var openinganimation = gsap.timeline({});
+// fetch("nike-animation.json")
+//   .then((res) => res.json())
+//   .then((animationData) => {
+//     lottie.loadAnimation({
+//       container: document.getElementById("lottie"),
+//       renderer: "svg",
+//       loop: false,
+//       autoplay: true,
+//       animationData,
+//     });
+//   })
+//   .catch(console.error);
 
-openinganimation
-  .from(
-    ".icon",
-    {
-      opacity: 0,
-      stagger: 0.3,
-      ease: "steps(14)",
-      duration: 3.6,
-    },
-    0
-  )
+// //  Opening animation //
+// var openinganimation = gsap.timeline({});
 
-  // This is to animate all icons EXCEPT the Nike-Verse icon
-  .from(
-    "[data-name='nike_general']",
-    {
-      opacity: 0,
-      stagger: 0.3,
-      ease: "steps(10)",
-      duration: 2,
-    },
-    "-=2"
-  )
-  .from(
-    "[data-name='shop']",
-    {
-      opacity: 0,
-      stagger: 0.3,
-      ease: "steps(6)",
-      duration: 2,
-    },
-    "-=1.5"
-  )
-  .from(
-    "[data-name='nikeverse']",
-    {
-      opacity: 0,
-      stagger: 0.3,
-      ease: "steps(9)",
-      duration: 2,
-    },
-    "-=1.5"
-  ) // <--- load the icon name only of this one, the image is hidden down below.
+// openinganimation
+//   .from(
+//     ".icon",
+//     {
+//       opacity: 0,
+//       stagger: 0.3,
+//       ease: "steps(1)",
+//       duration: 3.6,
+//     },
+//     0
+//   )
 
-  // Nikeverse specific
-  .set(
-    flames,
-    {
-      visibility: "visible",
-    },
-    0
-  ) // <--- Make this visible via CSS
+//   // This is to animate all icons EXCEPT the Nike-Verse icon
+//   .from(
+//     "[data-name='nike_general']",
+//     {
+//       opacity: 0,
+//       stagger: 0.5,
+//       ease: "steps(1)",
+//       duration: 2,
+//     },
+//     "-=2"
+//   )
+//   .from(
+//     "[data-name='shop']",
+//     {
+//       opacity: 0,
+//       stagger: 0.5,
+//       ease: "steps(1)",
+//       duration: 2,
+//     },
+//     "-=1.5"
+//   )
+//   .from(
+//     "[data-name='nikeverse']",
+//     {
+//       opacity: 0,
+//       stagger: 0.5,
+//       ease: "steps(1)",
+//       duration: 2,
+//     },
+//     "-=1.5"
+//   ) // <--- load the icon name only of this one, the image is hidden down below.
 
-  .set(
-    nikeversechildren,
-    {
-      opacity: 0, // <--- Hide the image tho, until I'm ready
-    },
-    0
-  )
+//   // Nikeverse specific
+//   .set(
+//     flames,
+//     {
+//       visibility: "visible",
+//     },
+//     0
+//   ) // <--- Make this visible via CSS
 
-  .from(
-    nikeversechildren,
-    {
-      duration: 2,
-      rotation: "8_short",
-      y: -25,
-      x: -46,
-      ease: "steps(10)",
-      Opacity: 1,
-    },
-    "+=2"
-  ) // <--- 2 seconds after, bring the space man in... he's late!
+//   .set(
+//     nikeversechildren,
+//     {
+//       opacity: 0, // <--- Hide the image tho, until I'm ready
+//     },
+//     0
+//   )
 
-  .set(flames, {
-    visibility: "hidden",
-  }); // <--- After complete, hide this
+//   .from(
+//     nikeversechildren,
+//     {
+//       duration: 2,
+//       rotation: "8_short",
+//       y: -25,
+//       x: -46,
+//       ease: "steps(10)",
+//       Opacity: 1,
+//     },
+//     "+=2"
+//   ) // <--- 2 seconds after, bring the space man in... he's late!
 
+//   .set(flames, {
+//     visibility: "hidden",
+//   }); // <--- After complete, hide this
 
 // NIKE GENERAL ICON LOTTIE ANIMATION
 var iconAnim = lottie.loadAnimation({
@@ -544,3 +578,99 @@ $("[data-name='nike_general']").on("mouseleave", function () {
   iconAnim.play();
   console.log("reverse");
 });
+
+// Drop down menu cotnrols
+const startbutton = document.getElementsByClassName("start-bar")[0];
+const menu = document.getElementsByClassName("dropdown-menu")[0];
+const menuwrapper = document.getElementsByClassName('start-menu-container')[0];
+
+function closeMenu (){
+  menu.classList.remove("active");
+  startbutton.classList.remove("active");
+}
+
+
+startbutton.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  startbutton.classList.toggle("active");
+});
+
+menuwrapper.addEventListener('mouseleave', e =>{
+  const mouseInsideMenu = menuwrapper.contains(e.relatedTarget);
+
+  if (!mouseInsideMenu) {
+    closeMenu();
+  }
+
+});
+
+const tmplt = document.getElementById('adware_tmplt').content;
+
+function spawnAdware({title, gif, top, left}) {
+  const clone = tmplt.cloneNode(true);
+  const container =clone.querySelector('.adware_container');
+
+  container.querySelector('.title_left_adware').textContent = title; 
+  container.querySelector('.window_gif').src = gif;
+  container.style.top = top;
+  container.style.left = left;
+
+
+  container 
+    .querySelector('button[aria-label="close"]')
+    .addEventListener('click', () => container.remove());
+
+
+  document.body.appendChild(clone);
+  container.classList.add('active');
+
+}
+
+const viewport = window.matchMedia('(min-width: 800px)');
+
+function handleViewportChange(e) {
+  if (!e.matches){
+    clearInterval(adInterval);
+  }
+
+  else {
+
+  }
+}
+
+setTimeout(() => {
+  for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+      spawnAdware({
+        title: `Ad #${Date.now()}`,
+        gif: `assets/gifs/P${i}.gif`,
+        top: `${Math.random() * 70 + 10}%`,
+        left: `${Math.random() * 85 + 10}%`,
+      });
+    }, i * 1500);
+  }
+}, 30000);
+
+interact('.adware_container').draggable({
+  inertia: false,
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: "parent",
+      endOnly: true,
+    })
+  ],
+  listeners: {
+    move (event) {
+      const el = event.target;
+
+      const x = (el.dataset.x|0) + event.dx;
+      const y = (el.dataset.y|0) + event.dy;
+      el.style.transform = `translate(${x}px, ${y}px)`;
+      el.dataset.x = x;
+      el.dataset.y =y;
+    }
+  }
+});
+ 
+
+

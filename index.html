@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>JSF100:Assesment 2</title>
-    <link href="main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.typekit.net/rmg4qwb.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>JSF100:Assessment 2</title>
+  <link href="main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/rmg4qwb.css" />
 
-    <!-- GSAP Library  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
-      integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+  <!-- Interact.js -->
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-    <!-- Custom ease -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/EasePack.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Lottie Library  -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"
-      integrity="sha512-yAr4fN9WZH6hESbOwoFZGtSgOP+LSZbs/JeoDr02pOX4yUFfI++qC9YwIQXIGffhnzliykJtdWTV/v3PxSz8aw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-  </head>
+  <!-- GSAP core (v3.13.0) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <!-- InertiaPlugin (v3.13.0) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+
+  <!-- EasePack matching v3.13.0 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+
+  <!-- Lottie -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.9.6/build/player/lottie.min.js"></script>
+</head>
+
 
   <body>
+
+    <template id="adware_tmplt">
+      <div class="adware_container">
+        <div class="adware_window">
+          <header class="title_adware">
+            <span class="title_left_adware">Nike SB (Skate Boarding) — 2002</span>
+            <div class="window_controls_adware">
+              <button aria-label="minimise"></button>
+              <button aria-label="maximise"></button>
+              <button aria-label="close"></button>
+            </div>
+          </header>
+          <img class="window_gif" src="assets/gifs/P2.gif" alt="Promotional GIF">
+        </div>
+      </div>
+    </template>
+
+
+
     <div class="main">
       <header>
         <div class="start-menu-container">
@@ -39,34 +56,41 @@
             <img class="logo" src="IMG/Nike_metalic_logo.png" alt="logo" />
             <h1 class="start">Start</h1>
           </button>
+          <span class="sep"></span>
           <div class="dropdown-menu">
             <ul>
-            <li><a href="#" role="menuitem">Nikeverse</a></li>
-            <li><a href="#" role="menuitem">Shop</a></li>
-            <li><a href="#" role="menuitem">Contact Us</a></li>
-          </ul>
+              <li>
+                <a href="#" role="menuitem"><u>N</u>ikeverse</a>
+              </li>
+              <li>
+                <a href="#" role="menuitem"><u>S</u>hop</a>
+              </li>
+              <li>
+                <a href="#" role="menuitem"><u>C</u>ontact Us</a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div class="quick-launch">
-          <div class="divider"></div>
-          <img
-            class="spaceman"
-            src="IMG/Desktop_icons/nikeverse_icon.png"
-            alt="icon"
-          />
-          <img
-            class="shopping"
-            src="IMG/Desktop_icons/shop_icon.png"
-            alt="icon"
-          />
-          <img class="nikelogo" src="IMG/Nike_metalic_logo.png" alt="icon" />
-          <img
-            class="clip"
-            src="IMG/Desktop_icons/clippy_icon.png"
-            alt="icon"
-          />
-        </div>
+        <nav class="quick-launch" role="toolbar">
+          <a href="#">
+            <img
+              class="spaceman"
+              src="IMG/Desktop_icons/nikeverse_icon.png"
+              alt="icon"
+            />
+          </a>
+          <a href="#">
+            <img class="nikelogo" src="IMG/Nike_metalic_logo.png" alt="icon" />
+          </a>
+          <a href="#">
+            <img
+              class="clip"
+              src="IMG/Desktop_icons/clippy_icon.png"
+              alt="icon"
+            />
+          </a>
+        </nav>
 
         <a class="cta" href="#"><button>Contact</button></a>
       </header>
@@ -75,27 +99,47 @@
       <!-- Desktop icons -->
       <div class="desktop_icons">
         <div class="icon" data-year="1974">
-          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1974" />
+          <img
+            src="IMG/Desktop_icons/folder_closed_icon.png"
+            alt="1974"
+            draggable="false"
+          />
           <h2>1974</h2>
         </div>
 
         <div class="icon" data-year="1982">
-          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1982" />
+          <img
+            src="IMG/Desktop_icons/folder_closed_icon.png"
+            alt="1982"
+            draggable="false"
+          />
           <h2>1982</h2>
         </div>
 
         <div class="icon" data-year="1984">
-          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="1984" />
+          <img
+            src="IMG/Desktop_icons/folder_closed_icon.png"
+            alt="1984"
+            draggable="false"
+          />
           <h2>1984</h2>
         </div>
 
         <div class="icon" data-year="2002">
-          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="" />
+          <img
+            src="IMG/Desktop_icons/folder_closed_icon.png"
+            alt="2002"
+            draggable="false"
+          />
           <h2>2002</h2>
         </div>
 
         <div class="icon" data-year="2003">
-          <img src="IMG/Desktop_icons/folder_closed_icon.png" alt="2003" />
+          <img
+            src="IMG/Desktop_icons/folder_closed_icon.png"
+            alt="2003"
+            draggable="false"
+          />
           <h2>2003</h2>
         </div>
 
@@ -106,13 +150,17 @@
         </div>
 
         <div class="icon_special" data-name="nikeverse">
-          <img src="IMG/Desktop_icons/fire.png" alt="" />
-          <img src="IMG/Desktop_icons/nikeverse_icon.png" alt="" />
+          <img src="IMG/Desktop_icons/fire.png" alt="" draggable="false" />
+          <img
+            src="IMG/Desktop_icons/nikeverse_icon.png"
+            alt=""
+            draggable="false"
+          />
           <h2>NIKE-VERSE</h2>
         </div>
 
         <div class="icon_special" data-name="shop">
-          <img src="IMG/Desktop_icons/shop_icon.png" alt="" />
+          <img src="IMG/Desktop_icons/shop_icon.png" alt="" draggable="false" />
           <h2>SHOP NIKE</h2>
         </div>
       </div>
@@ -124,9 +172,9 @@
               <span class="title-text">Nike SB (Skate Boarding) — 2002</span>
             </div>
             <div class="window-controls">
-            <button aria-label="minimise"></button>
-            <button aria-label="maximise"></button>
-            <button id="close-popup" aria-label="close"></button>
+              <button aria-label="minimise"></button>
+              <button aria-label="maximise"></button>
+              <button id="close-popup" aria-label="close"></button>
             </div>
           </div>
 

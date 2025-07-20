@@ -4,34 +4,32 @@
  * https://github.com/98css/98.css
  */
 
+/* ==========================================================================
+   1 · Global / Base Styles
+   ========================================================================== */
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("fonts/ms_sans_serif.woff") format("woff");
-  src: url("fonts/ms_sans_serif.woff2") format("woff2");
+  src: url("fonts/ms_sans_serif.woff") format("woff"),
+    url("fonts/ms_sans_serif.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Pixelated MS Sans Serif";
-  src: url("fonts/ms_sans_serif_bold.woff") format("woff");
-  src: url("fonts/ms_sans_serif_bold.woff2") format("woff2");
+  src: url("fonts/ms_sans_serif_bold.woff") format("woff"),
+    url("fonts/ms_sans_serif_bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
 }
 
-
-
-/* ==========================================================================
-   1. Base Styles
-   ========================================================================== */
 :root {
-  /* ==== Windows 98 SYSTEM UI ==== */
-  /* Color */
+  /* —— Windows 98 system palette —— */
   --text-color: #222222;
+  --text-color-hover: #ffffff;
   --surface: #c0c0c0;
   --button-highlight: #ffffff;
   --button-face: #dfdfdf;
@@ -43,7 +41,7 @@
   --dialog-gray-light: #b5b5b5;
   --link-blue: #0000ff;
 
-  /* Spacing */
+  /* —— Spacing —— */
   --element-spacing: 8px;
   --grouped-button-spacing: 4px;
   --grouped-element-spacing: 6px;
@@ -53,8 +51,7 @@
   --range-track-height: 4px;
   --range-spacing: 10px;
 
-
-  /* Borders */
+  /* —— Borders —— */
   --border-width: 1px;
   --border-raised-outer: inset -1px -1px var(--window-frame),
     inset 1px 1px var(--button-highlight);
@@ -64,11 +61,14 @@
     inset 1px 1px var(--window-frame);
   --border-sunken-inner: inset -2px -2px var(--button-face),
     inset 2px 2px var(--button-shadow);
-  --default-button-border-raised-outer: inset -2px -2px var(--window-frame), inset 1px 1px var(--window-frame);
-  --default-button-border-raised-inner: inset 2px 2px var(--button-highlight), inset -3px -3px var(--button-shadow), inset 3px 3px var(--button-face);
-  --default-button-border-sunken-outer: inset 2px 2px var(--window-frame), inset -1px -1px var(--window-frame);
-  --default-button-border-sunken-inner: inset -2px -2px var(--button-highlight), inset 3px 3px var(--button-shadow), inset -3px -3px var(--button-face);
-
+  --default-button-border-raised-outer: inset -2px -2px var(--window-frame),
+    inset 1px 1px var(--window-frame);
+  --default-button-border-raised-inner: inset 2px 2px var(--button-highlight),
+    inset -3px -3px var(--button-shadow), inset 3px 3px var(--button-face);
+  --default-button-border-sunken-outer: inset 2px 2px var(--window-frame),
+    inset -1px -1px var(--window-frame);
+  --default-button-border-sunken-inner: inset -2px -2px var(--button-highlight),
+    inset 3px 3px var(--button-shadow), inset -3px -3px var(--button-face);
 
   /* Window borders flip button-face and button-highlight */
   --border-window-outer: inset -1px -1px var(--window-frame),
@@ -76,98 +76,45 @@
   --border-window-inner: inset -2px -2px var(--button-shadow),
     inset 2px 2px var(--button-highlight);
 
-  /* Field borders (checkbox, input, etc) flip window-frame and button-shadow */
+  /* Field borders flip window-frame and button-shadow */
   --border-field: inset -1px -1px var(--button-highlight),
     inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
     inset 2px 2px var(--window-frame);
-  --border-status-field: inset -1px -1px var(--button-face), inset 1px 1px var(--button-shadow);
+  --border-status-field: inset -1px -1px var(--button-face),
+    inset 1px 1px var(--button-shadow);
 
-  /* Tabs */
+  /* Tab border */
   --border-tab: inset -1px 0 var(--window-frame),
     inset 1px 1px var(--button-face),
     inset -2px 0 var(--button-shadow),
     inset 2px 2px var(--button-highlight);
 
-    /* —— Font stacks —— */
+  /* —— Font stacks —— */
   --font-ui: "Pixelated MS Sans Serif", Arial, sans-serif;
   --font-win: Tahoma, "MS Sans Serif", sans-serif;
 
-  /* —— Font sizes (fs) & line-heights (lh) —— */
+  /* —— Font sizes —— */
   --fs-title: 30px;
   --lh-title: 36px;
   --fs-body: 11px;
   --lh-body: 16px;
-  --fs-subhead: 15px;
+  --fs-subhead: 10px;
   --lh-subhead: 17px;
 
-  /* —— Colors —— */
+  /* —— Colours —— */
   --color-body: #000000;
   --color-link: #0000ff;
   --color-light: #ffffff;
-
- 
 }
 
 html {
-
   font-family: var(--font-ui);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   color: var(--color-body);
-
 }
-
-/* ==========================================================================
-   3. Pop-up Windows
-   ========================================================================== */
-
-h1 {
-  font: var(--fs-title)/var(--lh-title) var(--font-win);
-  color: var(--color-body);
-}
-
-h2 {
-  font: var(--fs-subhead)/var(--lh-subhead) var(--font-ui);
-  color: var(--color-light);
-}
-
-h3 {
-  font: var(--fs-subhead)/var(--lh-subhead) var(--font-win);
-  color: var(--color-body);
-  font-weight: bold;
-  /* margin-top: 3%; */
-  
-}
-
-p {
-  font: var(--fs-body)/var(--lh-body) var(--font-ui);
-  color: var(--color-body);
-
-}
-
-button,
-input,
-select,
-textarea {
-  display: inline-flex;
-  
-  align-items: center;
-  font: var(--fs-body)/var(--lh-body) var(--font-ui);
-}
-
-header .nav-links a {
-  font: var(--fs-body)/var(--lh-body) var(--font-ui);
-}
-
-.start {
-  font: var(--fs-body)/var(--lh-body) var(--font-ui);
-  font-weight: bold;
-}
-
-
 
 body {
-
   color: var(--text-color);
   position: relative;
   background-attachment: fixed;
@@ -179,186 +126,16 @@ body {
   margin: 0;
   min-height: 100vh;
   min-width: 100vw;
-  /* TODO: REMMBER TO REMVE BELOW */
-
   overflow: hidden;
+  /* TODO: remove if scrolling needed */
 }
-
-button {
-  /* all: unset; remove default button styles */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  background: var(--surface);
-  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
-  border-radius: 0;
-  padding: 0 12px;
-  min-height: 23px;
-
-}
-
-li,
-a {
-
-
-  color: var(--text-color);
-  text-decoration: none;
-  margin-left: auto;
-  list-style: none;
-  /* padding: 10px; */
-}
-
-.start {
-
-
-
-  color: #000000;
-  text-decoration: none;
-  padding: 3px 8px 3px 0px;
-  margin: 8px 0px 8px 0px;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  background: var(--surface);
-  box-shadow: var(--border-window-outer), var(--border-window-inner);
-  padding: 3px;
-  height: auto;
-  max-width: 100vw;
-  overflow: visible;
-  box-sizing: border-box;
-
-}
-
-.start-menu-container {
-  position: relative;
-}
-
-/* from https://jdan.github.io/98.css/#button */
-.start-bar {
-  all: unset;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-
-  background: var(--surface);
-  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
-  border-radius: 0;
-  min-width: 75px;
-  min-height: 23px;
-  padding: 0 12px;
-  
-
-
-}
-
-.logo {
-  height: 20px;
-  width: 100%;
-  cursor: pointer;
-  padding: 0px 0px 0px 6px;
-
-}
-
-.dropdown-menu {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  background: var(--surface);
-
-  min-width: 100%;
-  width: auto;
-  white-space: nowrap;
-  opacity: 1;
-  z-index: 9999;
-
-}
-
-.dropdown-menu ul {
-  width: 100%;
-  list-style: none;
-  margin-left: 0%;
-  padding-left: 0%;
-
-}
-
-.dropdown-menu li a {
-  display: block;
-  width: auto;
-  padding: 20px;
-  padding-right: 60px;
-}
-
-.dropdown-menu li a:hover {
-  background: rgba(0, 0, 0, .1);
-}
-
-.quick-launch {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--surface);
-  border-left-style: groove;
-  border-right-style: groove;
-  width: auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-
-  height: auto;
-  border-width: 3px;
-
-
-}
-
-[alt="icon"] {
-  height: 30px;
-  filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 1));
-  padding: 3px;
-  margin: 3px;
-
-}
-
-.clip {
-  height: 40px;
-  filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 1));
-  padding: 3px;
-  margin: 3px;
-
-}
-
-
-.divider {
-  width: 5px;
-  height: 40px;
-  background: #c0c0c0;
-  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
-  border-radius: 10px;
-}
-
-
-
 
 /* ==========================================================================
-   2. Utility / Layout
+   2 · Utility / Layout
    ========================================================================== */
-/* .main {
-  align-items: center;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  margin: 0;
-  width: 100vw;
-} */
-
 #lottie {
   position: fixed;
-  /* not affected by parents */
+  /* keeps it centred regardless of DOM flow */
   top: 50%;
   left: 50%;
   transform: translateX(-50%);
@@ -368,27 +145,258 @@ header {
   pointer-events: auto;
 }
 
-/* #lottie:hover {
-  animation: floating 4s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+/* ==========================================================================
+   3 · Header & Navigation ( <header> )
+   ========================================================================== */
+header {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  padding: 6px;
+  max-width: 100vw;
+  height: auto;
+  overflow: visible;
+  box-sizing: border-box;
 
 }
 
-@keyframes floating {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
+/* —— Start button & dropdown —— */
+.start-menu-container {
+  position: relative;
+  width: 100px;
+  height: 35px;
 
-  50% {
-    transform: translateY(-100px) rotate(-40deg);
-  }
+}
 
-  100% {
-    transform: translateY(0) rotate(1deg);
-  }
-} */
+.start-bar {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  background: var(--surface);
+  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.start-bar.active {
+  /* box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080; */
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+  box-shadow: var(--default-button-border-sunken-outer), var(--default-button-border-sunken-inner);
+}
+
+.logo {
+  height: 1rem;
+  width: auto;
+  cursor: pointer;
+  /* padding: 0 0 0 6px; */
+}
+
+.start {
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+  font-weight: bold;
+  color: #000;
+  /* padding: 3px 8px 3px 0; */
+  /* margin: 8px 0; */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: var(--surface);
+  min-width: 100%;
+  width: auto;
+  white-space: nowrap;
+  z-index: 9999;
+}
+
+.dropdown-menu.active {
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: var(--surface);
+  min-width: 100%;
+  width: auto;
+  white-space: nowrap;
+  z-index: 9999;
+}
+
+
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 20px 60px 20px 20px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background: var(--dialog-blue);
+  color: var(--text-color-hover);
+
+}
 
 /* ==========================================================================
-   3. Pop-up Windows
+   4 · Quick Launch Bar
+   ========================================================================== */
+.quick-launch {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  /* matches Start bar inner height */
+  margin: 0 10px 0 10px;
+  padding: 0 2px;
+  /* left/right padding inside bezel */
+  /* background: var(--surface); */
+
+  /* top & left edges raised */
+  /* border-top:    1px solid #fff; */
+  border-left: 2px groove var(--surface);
+
+  /* bottom & right edges sunken */
+  /* border-bottom: 2px groove var(--surface); */
+  border-right: 2px groove var(--surface);
+  box-sizing: border-box;
+
+}
+
+
+
+
+.quick-launch a img {
+  display: block;
+  /* height: 30px; */
+  /* margin: 3px 3pxpx;            */
+  /* user-drag: none; */
+  -webkit-user-drag: none;
+
+
+}
+
+[alt="icon"] {
+  box-sizing: border-box;
+  height: 34px;
+  padding: 3px;
+  margin: 3px;
+  filter: drop-shadow(1px 1px 0 rgb(32, 32, 32));
+}
+
+
+
+
+.adware_container {
+  display: flex;
+  position: absolute;
+  width: auto;
+  height: auto;
+  visibility: visible;
+  z-index: 2000;
+}
+
+.adware_container.active{
+  visibility: visible;
+   
+  cursor: default !important;
+}
+
+.adware_window {
+  width: auto;
+  box-shadow: var(--border-window-outer), var(--border-window-inner);
+  height: auto;
+  padding: .25rem;
+  background-color: var(--surface);
+ 
+}
+
+.title_adware {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 2px 3px 3px;
+  box-sizing: content-box;
+  background: linear-gradient(90deg, var(--dialog-blue), var(--dialog-blue-light));
+  color: var(--color-light);
+  font: bold var(--fs-subhead)/var(--lh-subhead) var(--font-win);
+  -webkit-font-smoothing: none;
+}
+
+.title_left_adware{
+  display: flex;
+  align-items: flex-start;
+  gap: .4rem;
+  padding-left: 1rem;
+}
+
+.window_controls_adware{
+  display:flex;
+  gap: 2px;
+  padding-right: .25rem;
+}
+
+.window_controls_adware button{
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 14px;
+  background: var(--surface);
+  box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.window_controls_adware button:active {
+  box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+}
+
+
+.window_controls_adware [aria-label=minimise]{
+  background-image: url("icon/minimize.svg");
+  color: var(--surface);
+}
+
+.window_controls_adware [aria-label=close]{
+  background-image: url("icon/close.svg");
+  color: var(--surface);
+  background-position: 4px 3px;
+}
+
+.window_controls_adware [aria-label=maximise]{
+  background-image: url("icon/maximize.svg");
+  color: var(--surface);
+  background-position: 4px 3px;
+  background-position: 3px 2px;
+}
+
+
+.adware_window img {
+  width: auto;
+  height: auto;
+}
+
+
+
+/* ==========================================================================
+   5 · Pop-up Window (Nike SB modal)
    ========================================================================== */
 .PopUp_container {
   position: fixed;
@@ -404,112 +412,93 @@ header {
 }
 
 .window {
-  z-index: 2000;
   width: 700px;
   max-width: 90vw;
-
-  /* TODO: DELETE WHEN FINISHED POP-UPWINDOW */
-  /* height: auto; */
   background: var(--surface);
   box-shadow: var(--border-window-outer), var(--border-window-inner);
   padding: .25rem;
-  /* padding-bottom: 1rem; */
-
+  z-index: 2000;
 }
 
 .title {
- display:flex; align-items:center; justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 2px 3px 3px;
   background: linear-gradient(90deg, var(--dialog-blue), var(--dialog-blue-light));
   color: var(--color-light);
   font: bold var(--fs-subhead)/var(--lh-subhead) var(--font-win);
-  /* padding:.25rem .5rem; */
-  padding: 3px 2px 3px 3px;
   -webkit-font-smoothing: none;
-  
-  
-  
-  /* TODO: DELETE WHEN FINISHED POP-UPWINDOW */
-  /* height: 1.6rem; */
 }
 
 .title-left {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  align-items: flex-start;
+  gap: .4rem;
+  padding-left: 1rem;
 }
 
 .window-controls {
   display: flex;
   gap: 2px;
-  
 }
 
 .window-controls button {
-  all: unset; 
+  all: unset;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 16px;
   height: 14px;
-  
   background: var(--surface);
   box-shadow: var(--border-raised-outer), var(--border-raised-inner);
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
 }
 
 .window-controls button:active {
   box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
 }
 
-
-.title button[aria-label=close] {
+/* .title--adware button[aria-label="close"]{
   background-image: url("icon/close.svg");
-  background-repeat: no-repeat;
-  background-position-x: 4px;
-  background-position-y: 3px;
+  background-position: 4px 3px;
+  color: var(--surface);
+} */
+/* .title title--adware{
+
+} */
+
+
+.title button[aria-label="close"] {
+  background-image: url("icon/close.svg");
+  background-position: 4px 3px;
   color: var(--surface);
 }
 
-.title button[aria-label=minimise] {
+.title button[aria-label="minimise"] {
   background-image: url("icon/minimize.svg");
-  background-repeat: no-repeat;
   color: var(--surface);
 }
 
-.title button[aria-label=maximise] {
+.title button[aria-label="maximise"] {
   background-image: url("icon/maximize.svg");
-  background-repeat: no-repeat;
-  background-position-x: 3px;
-  background-position-y: 2px;
-
+  background-position: 3px 2px;
   color: var(--surface);
 }
-
 
 .infoContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem;
-  /* margin-top: 1rem; */
-  /* justify-content: space-between; */
-  
+  padding: 1.5rem;
 }
 
 .description {
-
-  /* TODO: DELETE WHEN FINISHED WINDOWS */
-   /* padding: 1rem; */
-  /* padding-bottom: 8rem; */
-  /* or more if needed */
-  /* background: #c0c0c0; */
-  word-wrap: break-word;
   flex: 1 1 55%;
-
-  color: #000;
+  word-wrap: break-word;
   font-size: 0.9rem;
-  
+  color: #000;
 }
 
 .PopUp_container img {
@@ -519,186 +508,216 @@ header {
 }
 
 #shoe-image {
+  flex: 1 1 40%;
   display: flex;
   justify-content: center;
-  
-  flex: 1 1 40%;
-  
-  
-  
   background: #c0c0c0;
-  
-  
 }
 
-
-
-
 /* ==========================================================================
-   5. Desktop Icons Grid & Flex Helpers
+   6 · Desktop Icons
    ========================================================================== */
 .desktop_icons {
   width: 100vw;
   height: 100vh;
 }
 
-/* Icon & Special-Icon Shared Styles */
 .desktop_icons .icon,
 .desktop_icons .icon_special {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   z-index: 1000;
 }
 
-/* Fluid Image Sizing */
 .desktop_icons .icon img,
 .desktop_icons .icon_special img {
+  left: clamp(2%, var(--icon-x, 50%), 88%);
+  top: clamp(2%, var(--icon-y, 50%), 88%);
   display: flex;
-
   margin: 0 auto;
   width: clamp(40px, 8vw, 120px);
   height: auto;
 }
 
+/* Special-icon tweaks */
 [data-name="nikeverse"] img:first-child {
+  left: (2%, var(--icon-x, 50%), 88%);
+  top: (2%, var(--icon-y, 50%), 88%);
   position: absolute;
+  
+
 }
 
 [data-name="nike_general"] img,
 [data-name="nike_general"] svg {
-  display: block;
-  margin: 0 auto;
   width: clamp(40px, 8vw, 80px);
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* ==========================================================================
-   6. Special Icon Overrides
-   ========================================================================== */
 .desktop_icons .icon_special h2 {
   text-align: center;
 }
 
-/* ==========================================================================
-   7. Absolute Positioning of Icons
-   ========================================================================== */
-/* Year-folders */
+/* —— Icon absolute positions —— */
 [data-year="1974"] {
-  left: 70%;
   position: absolute;
-  top: 80%;
+  left: clamp(12%, 79%, 88%);
+  top: clamp(10%, 64%, 70%);
 }
 
 [data-year="1982"] {
-  left: 80%;
   position: absolute;
-  top: 30%;
+  left: clamp(23%, 60%, 80%);
+  top: clamp(10%, 20%, 70%);
 }
 
 [data-year="1984"] {
-  left: 80%;
   position: absolute;
-  top: 10%;
+  left: clamp(35%, 75%, 80%);
+  top: clamp(8%, 10%, 70%);
+
+
 }
 
 [data-year="2002"] {
-  left: 70%;
   position: absolute;
-  top: 34%;
+
+  left: clamp(10%, 70%, 88%);
+  top: clamp(8%, 40%, 70%);
+
 }
 
 [data-year="2003"] {
-  left: 20%;
   position: absolute;
-  top: 8%;
+  left: clamp(10%, 20%, 88%);
+  top: clamp(5%, 65%, 75%);
 }
 
 #nike-general {
+
   width: 5rem;
   height: 5rem;
-  /* just to debug if it's even showing */
 }
 
-/* “Just Do It” */
 [data-name="nike_general"] {
+
   left: 3%;
+  top: 10%;
   display: flex;
-  align-items: center;
   flex-direction: column-reverse;
   align-items: center;
-  position: absolute;
-  top: 10%;
   width: clamp(40px, 8vw, 80px);
 }
 
-/* Nike-Verse */
 [data-name="nikeverse"] {
   left: 3%;
-  position: absolute;
   top: 30%;
+  position: absolute;
+
 }
 
-/* Shop */
+
 [data-name="shop"] {
   left: 3%;
-  position: absolute;
   top: 50%;
+  position: absolute;
 }
 
-
 /* ==========================================================================
-   9. Form & Buttons
+   7 · Forms & Buttons (Clippy search bubble)
    ========================================================================== */
 #form_container {
-  align-items: center;
-  background: rgba(251, 249, 205, 1);
-  border: 1px solid black;
-  border-radius: 11px;
   display: flex;
   flex-flow: column;
-  padding: 0.5rem;
+  align-items: center;
+  padding: .5rem;
+  background: rgba(251, 249, 205, 1);
+  border: 1px solid #000;
+  border-radius: 11px;
 }
 
 label[for="clippylook"] {
-  margin: 0.3rem 0;
+  margin: .3rem 0;
   text-align: center;
 }
 
 input[type="search"] {
   display: none;
   margin-top: 10px;
-  width: 0.313rem;
+  width: .313rem;
 }
 
 .submit_box {
-  background-color: rgba(251, 249, 205, 1);
-  margin: 1% 0 4% 0;
+  margin: 1% 0 4%;
+  background: rgba(251, 249, 205, 1);
 }
 
-
 button:first-letter {
-  text-decoration: dotted underline black 1px;
+  text-decoration: dotted underline 1px #000;
 }
 
 /* ==========================================================================
-   10. Animations
+   8 · Animations (keyframes, etc.)
    ========================================================================== */
+/* (You had an optional floating animation commented out) */
 
+/* ==========================================================================
+   9 · Typography (headings & p)
+   ========================================================================== */
+h1 {
+  font: var(--fs-title)/var(--lh-title) var(--font-win);
+  color: var(--color-body);
+}
 
+h2 {
+  font: var(--fs-subhead)/var(--lh-subhead) var(--font-ui);
+  color: var(--color-light);
+}
+
+h3 {
+  font: var(--fs-subhead)/var(--lh-subhead) var(--font-win);
+  font-weight: bold;
+  color: var(--color-body);
+}
+
+p {
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+  color: var(--color-body);
+}
+
+button,
+input,
+select,
+textarea {
+  display: inline-flex;
+  align-items: center;
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+}
+
+header .nav-links a,
+li a {
+  font: var(--fs-body)/var(--lh-body) var(--font-ui);
+}
+
+/* ==========================================================================
+   10 · Responsive Tweaks
+   ========================================================================== */
 @media (max-width: 800px) {
   body {
     overflow-y: auto;
   }
 
   .desktop_icons {
+    position: static;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
     gap: 1rem;
-    position: static;
     padding-top: 2rem;
   }
 
@@ -726,30 +745,13 @@ button:first-letter {
   }
 
   .window {
-    background: var(--surface);
-    box-shadow: var(--border-window-outer), var(--border-window-inner);
-    /* position: relative; */
-   
-    z-index: 2000;
     max-width: 70vw;
-    padding: .25rem;
-    /* max-height: none; */
-    /* height: auto; */
-    overflow: visible;
-    /* box-sizing: border-box; */
     padding: .25rem;
   }
 
   .infoContainer {
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    /* width: 100%; */
-    /* height: auto; */
-    overflow: visible;
-    
-    flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
   }
@@ -763,17 +765,23 @@ button:first-letter {
 
   .description {
     padding: 1rem;
-    /* font-size: 0.95rem; */
-    /* width: 100%; */
-    overflow: visible;
-    /* box-sizing: border-box; */
   }
 
   p {
-    height: auto;
     width: 100%;
     line-height: 1.4;
   }
+
+
+.adware_container.active{
+  visibility: visible;
+  background-color: red;
+  cursor: default !important;
+  width: 20px;
+}
+
+
+
 }
 
 @media (max-width: 600px) {
@@ -781,7 +789,6 @@ button:first-letter {
     background-image: none !important;
     background-color: #019090 !important;
     background-attachment: fixed !important;
-    /* reset fixed */
     overflow: hidden !important;
   }
 
