@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+ <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>JSF100:Assessment 2</title>
@@ -17,15 +17,20 @@
 
   <!-- GSAP core (v3.13.0) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-  <!-- InertiaPlugin (v3.13.0) -->
+  <!-- InertiaPlugin -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
-
-  <!-- EasePack matching v3.13.0 -->
+  <!-- EasePack (for steps(), elastic.out(), etc.) -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+  <script>
+    // You only need to register InertiaPlugin and EasePack
+    gsap.registerPlugin(InertiaPlugin, EasePack);
+  </script>
 
-  <!-- Lottie -->
-  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.9.6/build/player/lottie.min.js"></script>
+    <!-- Lottie -->
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.9.6/build/player/lottie.min.js"></script>
+
+  
+  
 </head>
 
 
@@ -145,7 +150,8 @@
 
         <!-- Special icons -->
         <div class="icon_special" data-name="nike_general">
-          <div id="nike-general"></div>
+          <!-- <div id="nike-general"></div> -->
+           <img src ="IMG/Desktop_icons/nike_icon_animation.png" draggable= "false" />
           <h2>JUST DO IT</h2>
         </div>
 
