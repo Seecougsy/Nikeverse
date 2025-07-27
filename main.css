@@ -550,6 +550,13 @@ header {
 
 }
 
+[data-name="nike_general"] img,
+[data-name="nike_general"] svg {
+  width: clamp(40px, 8vw, 80px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 .desktop_icons .icon_special h2 {
   text-align: center;

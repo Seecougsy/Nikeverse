@@ -1,14 +1,11 @@
 $(document).ready(function () {
-  // All of your code goes here
+  // —— Plugin Registration ——
   gsap.registerPlugin(InertiaPlugin, EasePack);
 
-// Register the plugin
-  
+  // —— Initial Log ——
   console.log("hello world");
 
-  // *** 👟 SHOE OBJECTS *** //
-  // ℹ️ This is where the shoe info goes
-
+  // —— 👟 SHOE DATA ——
   var shoes = [
     {
       shoeName: "Nike Moon Shoe",
@@ -28,7 +25,6 @@ $(document).ready(function () {
       title: "A Shoe For Style...",
       image: "IMG/Shoes/2.jpg",
     },
-
     {
       shoeName: "Nike Air Jordan 1",
       year: 1984,
@@ -65,211 +61,82 @@ $(document).ready(function () {
     },
   ];
 
-  // *** 📂 FOLDER FUNCTIONS *** //
-  // ℹ️ This code opens the folder the user clicks on
-  // ℹ️ variables to use in the function  //
+  // —— 📂 Folder Functions ——
   var icon = $(".icon img");
-  var iconImg = $(".icon img").attr("src");
+  var iconImg = icon.attr("src");
   var popUp = $(".PopUp_container");
-  var clicked = $(this).attr("data-year");
-  var opened = $(this).attr({
-    src: "IMG/Desktop_icons/folder_open_icon.png",
-  });
 
-  // *** Opens folder
   icon.on("click", function () {
-    //<--- when an icon is clicked
-
-    // *** Call some variables to help
     var clicked = $(this);
     var clickedParent = clicked.parent();
     var clickedYear = clickedParent.attr("data-year");
-    var title = "";
-    var description = "";
     var heading = "";
 
-    //*** Reset all icons to OG state
-    $(".icon img").attr({
-      //<--- reset all the img attr to..
-      src: iconImg, //<--- this
-    });
-    console.log("found");
+    // Reset all icons
+    icon.attr({ src: iconImg });
 
-    //*** Change clicked icon
-    $(this).attr({
-      // <--- then change the one the user clicked...
-      src: "IMG/Desktop_icons/folder_open_icon.png", //<--- to this
-    });
+    // Open clicked folder icon
+    clicked.attr({ src: "IMG/Desktop_icons/folder_open_icon.png" });
+    popUp.addClass("PopUp_container_on");
 
-    //*** Open the pop-up window
-    $(".PopUp_container").addClass("PopUp_container_on");
-
-    //*** This part of the code populates the info in the popup window ✨ dynamically ✨
-
-    for (i = 0; i < shoes.length; i++) {
-      console.log(shoes[i].year, "Dynamic year");
-      console.log(clickedYear, "Clicked Year");
-
+    // Populate popup content dynamically
+    for (var i = 0; i < shoes.length; i++) {
       if (clickedYear == shoes[i].year) {
-        console.log("We have a match");
-
-        heading = shoes[i].title; // <--- Sets new variable to use later
-        $(".title-text").text(`${shoes[i].shoeName} — ${shoes[i].year}`); // <--- Create popup title from object
-        $(".description").html("<p>" + shoes[i].shoeHistory + "<p>"); // <--- Created description from object
-        $(".description").prepend("<h3>" + heading + "</h3>"); // <--- Creates heading from local new variable
-        $("#shoe-image img").attr({
-          src: shoes[i].image,
-        });
+        heading = shoes[i].title;
+        $(".title-text").text(`${shoes[i].shoeName} — ${shoes[i].year}`);
+        $(".description")
+          .html("<p>" + shoes[i].shoeHistory + "</p>")
+          .prepend("<h3>" + heading + "</h3>");
+        $("#shoe-image img").attr({ src: shoes[i].image });
       }
     }
-
-    console.log(title);
-    console.log(heading);
-    console.log(description);
   });
 
-  // *** This code triggers all windows close when user clicks off screen
-  // *** I saw this on the internet. It doesnt seem "proper" but right now it works lol //
-
+  // —— Close Popup ——
   $("#close-popup").on("click", function (event) {
-    if ($(event.target).closest(".icon").length == 0) {
-      // <---
-      $(".PopUp_container_on").removeClass("PopUp_container_on");
-      $(".icon img").attr({
-        //<--- reset all the img attr to..
-        src: iconImg, //<--- this
-      });
+    if (!$(event.target).closest(".icon").length) {
+      popUp.removeClass("PopUp_container_on");
+      icon.attr({ src: iconImg });
     }
   });
 
-  function Clippyshow() {
-    "main.css";
-
-    setTimeout(distort, 14000);
-    console.log("Glitch-on");
+  // —— Glitch Delay for Clippy ——
+  function distortGlitch() {
+    // placeholder for glitch logic
   }
-  //
 
-  // ***** ✨ ANIMATION OF POP UP WINDOWS ✨ ***** //
-
+  // —— ✨ Popup Window Animation ✨ ——
   var tl1 = new TimelineMax();
-
   tl1
-    .set(
+    .set(".PopUp_container", { scaleX: 0, scaleY: 0 }, 0)
+    .to(
       ".PopUp_container",
-      {
-        scaleX: 0,
-        scaleY: 0,
-      },
+      { duration: 0.4, scaleX: 0.9, scaleY: 1, ease: "steps(4)" },
       0
     )
     .to(
       ".PopUp_container",
-      {
-        duration: 0.4,
-        scaleX: 0.9,
-        scaleY: 1,
-        ease: "steps(4)",
-      },
+      { duration: 0.4, scaleX: 1, scaleY: 1, ease: "steps(4)" },
       0
     )
-    .to(
-      ".PopUp_container",
-      {
-        duration: 0.4,
-        scaleX: 1,
-        scaleY: 1,
-        ease: "steps(4)",
-      },
-      0
-    )
-    .from(
-      ".title",
-      {
-        duration: 0,
-        opacity: 0,
-        ease: "steps(10)",
-      },
-      0.1
-    )
-    .from(
-      "#shoe-image",
-      {
-        duration: 0.1,
-        opacity: 0,
-        ease: "steps(10)",
-      },
-      0.5
-    )
-    .from(
-      ".description",
-      {
-        duration: 0.2,
-        opacity: 0,
-        ease: "steps(3)",
-      },
-      0.9
-    );
-
+    .from(".title", { duration: 0, opacity: 0, ease: "steps(10)" }, 0.1)
+    .from("#shoe-image", { duration: 0.1, opacity: 0, ease: "steps(10)" }, 0.5)
+    .from(".description", { duration: 0.2, opacity: 0, ease: "steps(3)" }, 0.9);
   $(".icon").on("click", function () {
     tl1.play(0);
-    console.log("play");
   });
 
-  var clippytl = gsap.timeline();
-  clippytl
-    .pause()
-    .from(".clippy_box", {
-      scale: 0,
-      duration: 0.2,
-      opacity: 0,
-      ease: "steps(3)",
-    })
 
-    .from(
-      ".speech_bubble",
-      {
-        duration: 0.5,
-        scaleX: 0.5,
-        scaleY: 0,
-        ease: "Power1",
-      },
-      1
-    )
-    .to(
-      ".speech_bubble",
-      {
-        duration: 0.3,
-        scaleX: 1,
-        scaleY: 1,
-        ease: "Power1",
-      },
-      1
-    );
 
-  function Clippyshow() {
-    clippytl.play(0);
-
-    console.log("clippy is in the house");
-  }
-
-  setTimeout(Clippyshow, 10000); // <---- after this time has passed
-
-  // 🛻 🚀 animation //
-
-  // 🚩🚩🚩 is this where i should use a callback function????
+  // —— 🛻 🚀 Main Animations ——
   var nikeversechildren = $("[data-name='nikeverse']").children().not("h2");
   var flames = $('[data-name="nikeverse"] img:first-child');
-  var shopchildren = $("[data-name='shop'] img"); //.children().not("h2");
-  var nike_icon =$("[data-name='nike_general'] img");
-  
-  gsap.set(shopchildren, {
-    transformOrigin: "25% 95%",
-  });
+  var shopchildren = $("[data-name='shop'] img");
+  var nike_icon = $("[data-name='nike_general'] img");
 
+  gsap.set(shopchildren, { transformOrigin: "25% 95%" });
 
-  // ===== NIKE VERSE ANIMATION GSAP START=======
-
+  // — NIKEVERSE HOVER ANIMATION TIMELINE 👨‍🚀 —
   var nikeverse = gsap.timeline({
     paused: true,
     reversed: true,
@@ -285,302 +152,142 @@ $(document).ready(function () {
       });
       gsap.set(flames, { visibility: "hidden" });
     },
-    onReverseComplete: () => {
-      // remove GSAP's inline transform so your CSS transform can take effect
-      gsap.set(nikeversechildren, { clearProps: "transform" });
-    },
+    onReverseComplete: () =>
+      gsap.set(nikeversechildren, { clearProps: "transform" }),
   });
-
   nikeverse
-    .to(
-      flames,
-      {
-        visibility: "visible",
-        scaleY: 0.95,   
-        scaleX: 1.05, 
-        
-      },
-      0
-    )
+    .to(flames, { visibility: "visible", scaleY: 0.95, scaleX: 1.05 }, 0)
     .to(
       nikeversechildren,
       {
         y: "+=10",
-        scaleY: 0.95,   
-        scaleX: 1.1, 
+        scaleY: 0.95,
+        scaleX: 1.1,
         duration: 0.08,
         ease: "power1.out",
       },
       0
     )
-      .to(nikeversechildren,
-      {
-        scaleY: 1,   
-        scaleX: 1, 
-        duration: 0.2,
-        ease: "power2.out" ,
-      },
-      .2
-    )
-
-  
-
     .to(
       nikeversechildren,
-      {
-        y: "-=10",
-        rotation: -6,
-        duration: 0.2,
-        ease: "power4.out",
-      },
+      { scaleY: 1, scaleX: 1, duration: 0.2, ease: "power2.out" },
+      0.2
+    )
+    .to(
+      nikeversechildren,
+      { y: "-=10", rotation: -6, duration: 0.2, ease: "power4.out" },
       0
     )
-
-    .to(
-      flames,
-      {
-        visibility: "hidden",
-      },
-      0.1
-    )
-
-    .to(
-      flames,
-      {
-        visibility: "visible",
-      },
-      0.2
-    )
-
+    .to(flames, { visibility: "hidden" }, 0.1)
+    .to(flames, { visibility: "visible" }, 0.2)
     .to(
       nikeversechildren,
-      {
-        inertia: {
-          y: {
-            velocity: -300,
-            resistance: 50,
-            end: -5,
-          },
-        },
-      },
+      { inertia: { y: { velocity: -300, resistance: 50, end: -5 } } },
       0.2
     )
-
     .to(
       nikeversechildren,
-      {
-        rotation: 2,
-        duration: 0.9,
-        ease: "elastic.out(1, 0.5)",
-      },
+      { rotation: 2, duration: 0.9, ease: "elastic.out(1, 0.5)" },
       0.1
     )
     .pause();
 
-
-  
-var shop = gsap.timeline({ paused: true});
-
-// NIKE_ICON ANIMATION
-
-var nike_icon_hover = gsap.timeline({paused: true});
-
-nike_icon_hover
-    // build up (squash a little)
-    .to(nike_icon, {
-      y: 5,          
-      scaleY: 0.95,   
-      scaleX: 1.05,   
-      duration: 0.08, 
-      ease: "power1.out"
+  // — SHOP TIMELINE HOVER TIMELINE 🛒 — 
+  var shop = gsap.timeline({ paused: true });
+  shop
+    .to(shopchildren, {
+      y: 5,
+      scaleY: 0.95,
+      scaleX: 1.05,
+      duration: 0.08,
+      ease: "power1.out",
     })
-     // up 
-    .to(nike_icon, {
-      y: -30,         
-      rotation: 5,    
-      scaleY: 1,      
-      scaleX: 1,      
-      duration: 0.2,  
-      ease: "power2.out" 
+    .to(shopchildren, {
+      y: -30,
+      rotation: 5,
+      duration: 0.2,
+      ease: "power2.out",
     })
+    .to(shopchildren, { y: 5, rotation: -5, duration: 0.15, ease: "power2.in" })
+    .to(shopchildren, {
+      y: 0,
+      rotation: 0,
+      duration: 0.1,
+      ease: "elastic.out(1, 0.5)",
+    });
 
-  // down
-  .to(nike_icon, {
-    y: 5,           
-    rotation: -5,   
-    duration: 0.15, 
-    ease: "power2.in" 
-  })
+  // — NIKE ICON HOVER TIMELINE ✔️ —
+  var nike_icon_hover = gsap.timeline({ paused: true });
+  nike_icon_hover
+    .to(nike_icon, {
+      y: 5,
+      scaleY: 0.95,
+      scaleX: 1.05,
+      duration: 0.08,
+      ease: "power1.out",
+    })
+    .to(nike_icon, { y: -30, rotation: 5, duration: 0.2, ease: "power2.out" })
+    .to(nike_icon, { y: 5, rotation: -5, duration: 0.15, ease: "power2.in" })
+    .to(nike_icon, {
+      y: 0,
+      rotation: 0,
+      scaleY: 1,
+      scaleX: 1,
+      duration: 0.1,
+      ease: "elastic.out(1, 0.5)",
+    });
 
-  // 4bounce
-  .to(nike_icon, {
-    y: 0,           
-    rotation: 0,    
-    scaleY: 1,      
-    scaleX: 1,      
-    duration: 0.1,  
-    ease: "elastic.out(1, 0.5)" 
-  });
-
-
-
-
-// SHOP HOVER ANIMATION // 
-
-shop
-  // build up (squash a little)
-  .to(shopchildren, {
-    y: 5,          
-    scaleY: 0.95,   
-    scaleX: 1.05,   
-    duration: 0.08, 
-    ease: "power1.out"
-  })
-
-  // up 
-  .to(shopchildren, {
-    y: -30,         
-    rotation: 5,    
-    scaleY: 1,      
-    scaleX: 1,      
-    duration: 0.2,  
-    ease: "power2.out" 
-  })
-
-  // down
-  .to(shopchildren, {
-    y: 5,           
-    rotation: -5,   
-    duration: 0.15, 
-    ease: "power2.in" 
-  })
-
-  // 4bounce
-  .to(shopchildren, {
-    y: 0,           
-    rotation: 0,    
-    scaleY: 1,      
-    scaleX: 1,      
-    duration: 0.1,  
-    ease: "elastic.out(1, 0.5)" 
-  });
-
+  // —— Event Handlers ——
   $("[data-name='shop']").on("mouseenter", function () {
     shop.play(0);
-    console.log("shop");
   });
-
-
-
-  shop.pause();
-
   const nv = $(".icon_special[data-name='nikeverse']");
-
-  //  EvENT HANDLERS
   nv.on("mouseenter", function () {
-    if (!nikeverse.isActive()) {
-      nikeverse.restart();
-      console.log("nikeverse");
-    }
+    if (!nikeverse.isActive()) nikeverse.restart();
   });
-
-  // nv.on("mouseleave", function () {
-  //   if (!nikeverse.reversed()){
-  //     nikeverse.reverse();
-  //     console.log("nikeverse");
-  //   }
-
-  // });
-
   $("[data-name='nike_general']").on("mouseenter", function () {
-      nike_icon_hover.play(0);
-      console.log("nike_general_animation_play")
+    nike_icon_hover.play(0);
   });
 
- 
-
-
-  // MAIN Nike progress bar logo animation 🚀🚀
-
-  // TURN ON, INITIAL ANIMATION ###############
-
+  // —— Lottie Animation Nike Loading ——
   fetch("nike-animation.json")
     .then((res) => res.json())
-    .then((animationData) => {
+    .then((animationData) =>
       lottie.loadAnimation({
         container: document.getElementById("lottie"),
         renderer: "svg",
         loop: false,
         autoplay: true,
         animationData,
-      });
-    })
+      })
+    )
     .catch(console.error);
 
-  //  Opening animation //
-  var openinganimation = gsap.timeline({});
-
+  // —— Opening Animation ——
+  var openinganimation = gsap.timeline();
   openinganimation
     .from(
       ".icon",
-      {
-        opacity: 0,
-        stagger: 0.3,
-        ease: "steps(1)",
-        duration: 3.6,
-      },
+      { opacity: 0, stagger: 0.3, ease: "steps(1)", duration: 3.6 },
       0
     )
-
-    // This is to animate all icons EXCEPT the Nike-Verse icon
     .from(
       "[data-name='nike_general']",
-      {
-        opacity: 0,
-        stagger: 0.5,
-        ease: "steps(1)",
-        duration: 2,
-      },
+      { opacity: 0, stagger: 0.5, ease: "steps(1)", duration: 2 },
       "-=2"
     )
     .from(
       "[data-name='shop']",
-      {
-        opacity: 0,
-        stagger: 0.5,
-        ease: "steps(1)",
-        duration: 2,
-      },
+      { opacity: 0, stagger: 0.5, ease: "steps(1)", duration: 2 },
       "-=1.5"
     )
     .from(
       "[data-name='nikeverse']",
-      {
-        opacity: 0,
-        stagger: 0.5,
-        ease: "steps(1)",
-        duration: 2,
-      },
+      { opacity: 0, stagger: 0.5, ease: "steps(1)", duration: 2 },
       "-=1.5"
-    ) // <--- load the icon name only of this one, the image is hidden down below.
-
-    // Nikeverse specific
-    .set(
-      flames,
-      {
-        visibility: "visible",
-      },
-      0
-    ) // <--- Make this visible via CSS
-
-    .set(
-      nikeversechildren,
-      {
-        opacity: 0, // <--- Hide the image tho, until I'm ready
-      },
-      0
     )
-
+    .set(flames, { visibility: "visible" }, 0)
+    .set(nikeversechildren, { opacity: 0 }, 0)
     .from(
       nikeversechildren,
       {
@@ -589,95 +296,68 @@ shop
         y: -25,
         x: -46,
         ease: "steps(10)",
-        Opacity: 1,
+        opacity: 1,
       },
       "+=2"
-    ) // <--- 2 seconds after, bring the space man in... he's late!
+    )
+    .set(flames, { visibility: "hidden" });
 
-    .set(flames, {
-      visibility: "hidden",
-    }); // <--- After complete, hide this
-
-
-
-  // Drop down menu cotnrols
+  // —— Drop-down Menu Controls ——
   const startbutton = document.getElementsByClassName("start-bar")[0];
   const menu = document.getElementsByClassName("dropdown-menu")[0];
   const menuwrapper = document.getElementsByClassName(
     "start-menu-container"
   )[0];
-
   function closeMenu() {
     menu.classList.remove("active");
     startbutton.classList.remove("active");
   }
-
   startbutton.addEventListener("click", () => {
     menu.classList.toggle("active");
     startbutton.classList.toggle("active");
   });
-
   menuwrapper.addEventListener("mouseleave", (e) => {
-    const mouseInsideMenu = menuwrapper.contains(e.relatedTarget);
-
-    if (!mouseInsideMenu) {
-      closeMenu();
-    }
+    if (!menuwrapper.contains(e.relatedTarget)) closeMenu();
   });
 
+  // —— Adware Spawn Functions ——
   const tmplt = document.getElementById("adware_tmplt").content;
-
   function spawnAdware({ title, gif, top, left }) {
     const clone = tmplt.cloneNode(true);
     const container = clone.querySelector(".adware_container");
-
     container.querySelector(".title_left_adware").textContent = title;
     container.querySelector(".window_gif").src = gif;
     container.style.top = top;
     container.style.left = left;
-
     container
       .querySelector('button[aria-label="close"]')
       .addEventListener("click", () => container.remove());
-
     document.body.appendChild(clone);
     container.classList.add("active");
   }
-
-  const viewport = window.matchMedia("(min-width: 800px)");
-
-  function handleViewportChange(e) {
-    if (!e.matches) {
-      clearInterval(adInterval);
-    } else {
-    }
-  }
-
   setTimeout(() => {
-    for (let i = 0; i < 3; i++) {
-      setTimeout(() => {
-        spawnAdware({
-          title: `Ad #${Date.now()}`,
-          gif: `assets/gifs/P${i}.gif`,
-          top: `${Math.random() * 70 + 10}%`,
-          left: `${Math.random() * 85 + 10}%`,
-        });
-      }, i * 1500);
-    }
+    for (let i = 0; i < 3; i++)
+      setTimeout(
+        () =>
+          spawnAdware({
+            title: `Ad #${Date.now()}`,
+            gif: `assets/gifs/P${i}.gif`,
+            top: `${Math.random() * 70 + 10}%`,
+            left: `${Math.random() * 85 + 10}%`,
+          }),
+        i * 1500
+      );
   }, 30000);
 
+  // —— Interact.js Draggable Adware ——
   interact(".adware_container").draggable({
     inertia: false,
     modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: "parent",
-        endOnly: true,
-      }),
+      interact.modifiers.restrictRect({ restriction: "parent", endOnly: true }),
     ],
     listeners: {
       move(event) {
         const el = event.target;
-
         const x = (el.dataset.x | 0) + event.dx;
         const y = (el.dataset.y | 0) + event.dy;
         el.style.transform = `translate(${x}px, ${y}px)`;
